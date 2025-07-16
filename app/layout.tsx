@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import Providers from './providers'
 import { NextFont } from 'next/dist/compiled/@next/font'
+import LocalFont from 'next/font/local'
 
 export const metadata = {
   title: 'Sellit e-commerce Platform',
@@ -15,7 +16,7 @@ export const metadata = {
     'Sellit is a modern e-commerce platform designed for seamless buying and selling of products. Discover a wide range of items or easily list your own for sale.',
 }
 
-let font: NextFont
+let font = LocalFont({ src: '../../public/fonts/lato.woff2' })
 ;(async () => {
   if (process.env.NODE_ENV === 'production') {
     const {
@@ -23,8 +24,6 @@ let font: NextFont
     } = await import('next/font/google')
     font = Lato({ weight: '400', subsets: ['latin'] })
   } else {
-    const { default: LocalFont } = await import('next/font/local')
-    font = LocalFont({ src: '../../public/fonts/lato.woff2' })
   }
 })()
 
@@ -35,7 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className + ' h-fit'}>
+      {/*<body className={font.className + ' h-fit'}>*/}
+      <body className={'h-fit'}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers>
             <Resizer>

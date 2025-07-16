@@ -18,8 +18,8 @@ import { UserAccount } from '@/components/user-account/types'
 import { getTotalCountAtom } from '@/atoms'
 import SearchComp from '@/components/search'
 import { cn } from '@/lib/utils'
-import { Montagu_Slab } from 'next/font/google'
 import { signOutWrapper } from '@/app/auth'
+import { NextFont } from 'next/dist/compiled/@next/font'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 
@@ -35,7 +35,6 @@ let font: NextFont
     font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
   }
 })()
-
 
 export const NavMenuSmall = ({
   user,
@@ -70,7 +69,7 @@ export const NavMenuSmall = ({
       <div className="max-w-none border-b flex flex-row items-center justify-between w-full px-4 py-4 bg-background shadow-md dark:shadow-none">
         <Link
           href="/"
-          className={`${montaguSlab.className} text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold`}
+          className={`${font.className} text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold`}
         >
           Thrift
         </Link>
