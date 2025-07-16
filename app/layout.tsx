@@ -7,22 +7,23 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import Providers from './providers'
+import { NextFont } from 'next/dist/compiled/@next/font'
 
 export const metadata = {
-  title: 'Thrift eCommerce',
+  title: 'Sellit e-commerce Platform',
   description:
-    'Thrift, an ecommerce platform to buy or sell any product. Still in development...',
+    'Sellit is a modern e-commerce platform designed for seamless buying and selling of products. Discover a wide range of items or easily list your own for sale.',
 }
 
-let font
+let font: NextFont
 ;(async () => {
   if (process.env.NODE_ENV === 'production') {
-    ;({
+    const {
       default: { Lato },
-    } = await import('next/font/google'))
-    font = Lato({ weight: '500', subsets: ['latin'] })
+    } = await import('next/font/google')
+    font = Lato({ weight: '400', subsets: ['latin'] })
   } else {
-    const LocalFont = await import('next/font/local')
+    const { default: LocalFont } = await import('next/font/local')
     font = LocalFont({ src: '../../public/fonts/lato.woff2' })
   }
 })()

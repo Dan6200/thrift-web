@@ -22,7 +22,20 @@ import { Montagu_Slab } from 'next/font/google'
 import { signOutWrapper } from '@/app/auth'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
-const montaguSlab = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+
+let font: NextFont
+;(async () => {
+  if (process.env.NODE_ENV === 'production') {
+    const {
+      default: { Montagu_Slab },
+    } = await import('next/font/google')
+    font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+  } else {
+    const { default: LocalFont } = await import('next/font/local')
+    font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
+  }
+})()
+
 
 export const NavMenuSmall = ({
   user,

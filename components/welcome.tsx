@@ -14,7 +14,7 @@ let font: NextFont
     } = await import('next/font/google')
     font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
   } else {
-    const LocalFont = await import('next/font/local')
+    const { default: LocalFont } = await import('next/font/local')
     font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
   }
 })()
