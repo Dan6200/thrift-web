@@ -7,12 +7,12 @@ import {
   FormLabel,
   FormMessage,
 } from '../../../ui/form'
-import { ShippingInfoFormType } from '../types'
+import { ProductFormType } from '../types'
 
 export const Description = ({
   form,
 }: {
-  form: UseFormReturn<ShippingInfoFormType, any, undefined>
+  form: UseFormReturn<ProductFormType, any, undefined>
 }) => {
   return (
     <FormField

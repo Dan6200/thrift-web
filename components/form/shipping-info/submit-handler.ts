@@ -6,10 +6,10 @@ type SetShippingInfo = ReturnType<
   typeof useSetAtom<ShippingInfo | null, any[], any>
 >
 
-export default async (
+export async function submitHandler(
   setShippingInfo: SetShippingInfo,
-  formData: ShippingInfoFormType
-) => {
+  formData: ShippingInfoFormType,
+) {
   const { delivery_instructions, ...newFormData } = formData
   setShippingInfo({
     ...newFormData,

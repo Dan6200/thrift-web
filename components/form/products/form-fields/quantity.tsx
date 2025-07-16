@@ -6,22 +6,27 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../../ui/form'
+} from '../../ui/form'
 import { ProductFormType } from '../types'
 
-export const Title = ({
+export const Quantity = ({
   form,
 }: {
   form: UseFormReturn<ProductFormType, any, undefined>
 }) => (
   <FormField
     control={form.control}
-    name="title"
+    name="quantity_available"
     render={({ field }) => (
       <FormItem className="md:w-[45%]">
-        <FormLabel>Product Title</FormLabel>
+        <FormLabel>Quantity Available</FormLabel>
         <FormControl>
-          <Input placeholder="Product's title" {...(field as InputProps)} />
+          <Input
+            type="number"
+            placeholder="Available quantity"
+            {...(field as InputProps)}
+            onChange={(event) => field.onChange(+event.target.value)}
+          />
         </FormControl>
         <FormMessage />
       </FormItem>

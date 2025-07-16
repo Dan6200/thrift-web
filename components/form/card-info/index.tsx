@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { Form } from '../../ui/form'
 import { Name, ExpDate, CardNumber, SecurityCode } from './form-fields'
 import { CardInfoFormType } from './types'
-import submitHandler from './submit-handler'
+import { submitHandler } from './submit-handler'
 import useFormProps from './use-form-props'
 import { Fragment } from 'react'
 import { shippingInfoAtom } from '@/atoms/index'
@@ -17,7 +17,7 @@ export function CardInfoForm() {
   const { handleSubmit } = form
   const submit: SubmitHandler<CardInfoFormType> = submitHandler.bind(
     null,
-    setShippingInfo
+    setShippingInfo,
   )
 
   return (

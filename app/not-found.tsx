@@ -11,7 +11,7 @@ export default function NotFound() {
       router.back()
     }, 5000)
     return () => t
-  }, [])
+  }, [router])
   return (
     <main className="flex items-center gap-5 md:gap-10 flex-col container sm:w-4/5 py-48 px-8 md:px-32">
       <h1 className="text-5xl font-semibold mb-8 mx-auto text-center">

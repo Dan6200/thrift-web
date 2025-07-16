@@ -6,10 +6,11 @@ import getProductById from '../get-product-by-id'
 import getProducts from '../get-products'
 
 export default async function ProductPage({
-  params: { id },
+  params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
   let response = await getProductById(+id)
   if (response == undefined) {
     // TODO: Add 404 page

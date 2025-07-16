@@ -26,7 +26,7 @@ import { getTotalCountAtom } from '@/atoms'
 import { ShoppingCartDrawer } from '@/components/shopping-cart/drawer'
 import Search from '@/components/search'
 import { Montagu_Slab } from 'next/font/google'
-import { signOutWrapper } from '@/app/auth/firebase'
+import { signOutWrapper } from '@/app/auth'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 const montaguSlab = Montagu_Slab({ weight: '700', subsets: ['latin'] })

@@ -4,5 +4,9 @@ import { CardInfoFormType } from './types'
 
 type SetCardInfo = ReturnType<typeof useSetAtom<CardInfo | null, any[], any>>
 
-export default async (setCardInfo: SetCardInfo, formData: CardInfoFormType) =>
+export async function submitHandler(
+  setCardInfo: SetCardInfo,
+  formData: CardInfoFormType,
+) {
   setCardInfo(formData)
+}

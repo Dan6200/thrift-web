@@ -12,7 +12,7 @@ import {
   DeliveryInstructions,
 } from '../shipping-info/form-fields'
 import { ShippingInfoFormType } from './types'
-import submitHandler from './submit-handler'
+import { submitHandler } from './submit-handler'
 import useFormProps from './use-form-props'
 import { Fragment } from 'react'
 import { shippingInfoAtom } from '@/atoms/index'
@@ -25,7 +25,7 @@ export function ShippingInfoForm() {
   const { handleSubmit } = form
   const submit: SubmitHandler<ShippingInfoFormType> = submitHandler.bind(
     null,
-    setShippingInfo
+    setShippingInfo,
   )
 
   return (

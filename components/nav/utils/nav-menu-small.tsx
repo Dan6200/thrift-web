@@ -19,7 +19,7 @@ import { getTotalCountAtom } from '@/atoms'
 import SearchComp from '@/components/search'
 import { cn } from '@/lib/utils'
 import { Montagu_Slab } from 'next/font/google'
-import { signOutWrapper } from '@/app/auth/firebase'
+import { signOutWrapper } from '@/app/auth'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 const montaguSlab = Montagu_Slab({ weight: '500', subsets: ['latin'] })
@@ -198,7 +198,7 @@ export const NavMenuSmall = ({
       <div
         className={cn(
           'absolute top-0 left-0 w-full h-[3200px] backdrop-blur-sm',
-          showSearchBox ? '' : 'hidden'
+          showSearchBox ? '' : 'hidden',
         )}
         ref={searchOverLayRef}
       >

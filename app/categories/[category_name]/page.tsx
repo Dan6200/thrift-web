@@ -5,19 +5,20 @@ import { notFound } from 'next/navigation'
 import filterByField from './filter'
 
 export default async function ProductsPage({
-  params: { category_name },
+  params,
 }: {
-  params: { category_name: string }
+  params: Promise<{ category_name: string }>
 }) {
+  const { category_name } = await params
   const products: unknown = await filterByField(
     'category_name',
     '=',
-    category_name
+    category_name,
   )
   const moreProducts: unknown = await filterByField(
     'subcategory_name',
     '=',
-    category_name
+    category_name,
   )
   if (!isProducts(products) || !isProducts(moreProducts)) {
     throw new Error('Invalid product data')

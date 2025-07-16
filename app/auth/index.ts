@@ -1,19 +1,15 @@
-import { createClient, User } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase URL or Anon Key environment variables.')
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+import { Session, User } from '@supabase/supabase-js'
+import { supabase } from './supabase'
 
 export async function createUserWithEmailAndPasswordWrapper(
   email: string,
   password: string,
 ): Promise<
-  | { result: User | null; message: string; success: true }
+  | {
+      result: { user: User; session: Session } | null
+      message: string
+      success: true
+    }
   | { result: string; message: string; success: false }
 > {
   try {
@@ -22,12 +18,12 @@ export async function createUserWithEmailAndPasswordWrapper(
       password,
     })
 
-    if (error) {
-      throw error
+    if (error || data.user == null || data.session == null) {
+      throw error ?? new Error()
     }
 
     return {
-      result: data.user,
+      result: data as any,
       message: 'Created User Account Successfully',
       success: true,
     }
@@ -44,7 +40,11 @@ export async function signInWithEmailAndPasswordWrapper(
   email: string,
   password: string,
 ): Promise<
-  | { result: User | null; message: string; success: true }
+  | {
+      result: { user: User; session: Session } | null
+      message: string
+      success: true
+    }
   | { result: string; message: string; success: false }
 > {
   try {
@@ -53,12 +53,12 @@ export async function signInWithEmailAndPasswordWrapper(
       password,
     })
 
-    if (error) {
-      throw error
+    if (error || data.user == null || data.session == null) {
+      throw error ?? new Error()
     }
 
     return {
-      result: data.user,
+      result: data.user as any,
       message: 'Signed In User Successfully',
       success: true,
     }

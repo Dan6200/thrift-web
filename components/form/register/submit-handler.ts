@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPasswordWrapper } from '@/app/auth/firebase'
+import { createUserWithEmailAndPasswordWrapper } from '@/app/auth'
 import { isUserAccount } from '@/components/user-account/types'
 import axios, { AxiosError } from 'axios'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
@@ -9,7 +9,7 @@ export default async function submitHandler(
   setUser: any,
   setError: UseFormSetError<RegisterFormState>,
   router: AppRouterInstance,
-  data: RegisterFormState
+  data: RegisterFormState,
 ) {
   const formData = data
   const { confirm_password, ...userData } = formData
@@ -22,7 +22,7 @@ export default async function submitHandler(
   try {
     response = await createUserWithEmailAndPasswordWrapper(
       userData.email!,
-      userData.password
+      userData.password,
     )
     if (response == null) {
       setError('root', {
@@ -32,10 +32,13 @@ export default async function submitHandler(
       })
       return
     }
-    const { result: user } = response
+    const { result } = response
     const { confirm_password, password, ...dbData } = data
-    if (typeof user !== 'string') {
-      const token = await user.getIdToken()
+    if (result && typeof result !== 'string' && result.user) {
+      let token: string | null = null
+      if (result.session) {
+        token = result.session.access_token
+      }
       if (process.env.NEXT_PUBLIC_SERVER) {
         await axios
           .post(process.env.NEXT_PUBLIC_SERVER + '/v1/users', dbData, {

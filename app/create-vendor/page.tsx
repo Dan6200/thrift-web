@@ -25,10 +25,11 @@ export default function CreateVendorPage() {
             height={500}
           />
           <p>
-            Create a vendor account to list your products, reach more customers,
-            and track your sales with ease. Our platform gives you a powerful
-            dashboard to manage orders and view performance insights—all in one
-            place. Ready to expand your reach? Join today and start selling!"
+            &quot;Create a vendor account to list your products, reach more
+            customers, and track your sales with ease. Our platform gives you a
+            powerful dashboard to manage orders and view performance
+            insights—all in one place. Ready to expand your reach? Join today
+            and start selling!&quot;
           </p>
         </CardContent>
         <CardFooter className="flex justify-end w-full">

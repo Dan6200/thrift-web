@@ -1,14 +1,15 @@
-import { signInWithEmailAndPasswordWrapper } from '@/app/auth/firebase'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import { signInWithEmailAndPasswordWrapper } from '@/app/auth'
+import { User } from '@supabase/supabase-js'
+import axios, { AxiosError } from 'axios'
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { UseFormSetError } from 'react-hook-form'
-import { LoginFormState, ResponseData } from './types'
+import { LoginFormState } from './types'
 
 export default async function submitHandler(
   setUser: any,
   setError: UseFormSetError<LoginFormState>,
   router: AppRouterInstance,
-  data: LoginFormState
+  data: LoginFormState,
 ) {
   const loginData = data
   if (data.email === '') {
@@ -30,17 +31,18 @@ export default async function submitHandler(
       })
       return
     }
-    const { result: user } = response
-    if (user) {
+    const { result } = response
+    if (result && typeof result !== 'string' && result.user) {
       let token: string | null = null
-      if (typeof user !== 'string') token = await user.getIdToken()
-      console.log('token: ', token)
+      if (result.session) {
+        token = result.session.access_token
+      }
       if (process.env.NEXT_PUBLIC_SERVER) {
         await axios(process.env.NEXT_PUBLIC_SERVER + '/v1/users', {
           headers: { Authorization: `Bearer ${token}` },
         }).then((res) => {
-          const { data: user } = res
-          if (user) setUser({ ...user, token })
+          const { data: fetchedUser } = res
+          if (fetchedUser) setUser({ ...fetchedUser, token })
         })
         // re-route to previous page
         router.push('/')

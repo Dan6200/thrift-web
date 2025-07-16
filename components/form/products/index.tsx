@@ -2,13 +2,13 @@
 import { Button } from '@/components/ui/button'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Form } from '../../ui/form'
-import { ProductFormType } from '@/types'
-import submitHandler from './submit-handler'
+import { ProductFormType } from './types'
+import { submitHandler } from './submit-handler'
 import useFormProps from './use-form-props'
 import { Fragment } from 'react'
 import { productAtom } from '@/atoms/index'
 import { useSetAtom } from 'jotai'
-import { Check } from 'lucide-react'
+
 import {
   Title,
   Description,
@@ -25,7 +25,7 @@ export function ProductsForm() {
   const { handleSubmit } = form
   const submit: SubmitHandler<ProductFormType> = submitHandler.bind(
     null,
-    setProduct
+    setProduct,
   )
 
   return (
