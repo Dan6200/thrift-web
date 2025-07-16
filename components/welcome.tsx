@@ -1,12 +1,20 @@
 'use client'
 import { userAtom } from '@/atoms'
-import { Montagu_Slab } from 'next/font/google'
 import { useAtomValue } from 'jotai'
 import Link from 'next/link'
 import { Slideshow } from './slideshow'
 import { Button } from './ui/button'
 
-const montaguSlab = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+let font
+;(async () => {
+  if (process.env.NODE_ENV === 'production') {
+font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+    ;({ Montagu_Slab: font } = await import('next/font/google'))
+  } else {
+    LocalFont = await import('next/font/local')
+  }
+})()
+
 
 export function Welcome() {
   const user = useAtomValue(userAtom)
