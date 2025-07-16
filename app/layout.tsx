@@ -7,8 +7,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import Providers from './providers'
-import { NextFont } from 'next/dist/compiled/@next/font'
 import LocalFont from 'next/font/local'
+import { resolve } from 'path'
 
 export const metadata = {
   title: 'Sellit e-commerce Platform',
@@ -16,16 +16,17 @@ export const metadata = {
     'Sellit is a modern e-commerce platform designed for seamless buying and selling of products. Discover a wide range of items or easily list your own for sale.',
 }
 
-let font = LocalFont({ src: '../../public/fonts/lato.woff2' })
-;(async () => {
-  if (process.env.NODE_ENV === 'production') {
-    const {
-      default: { Lato },
-    } = await import('next/font/google')
-    font = Lato({ weight: '400', subsets: ['latin'] })
-  } else {
-  }
-})()
+const font = LocalFont({ src: resolve('public/fonts/lato.woff2') })
+
+// ;(async () => {
+//   if (process.env.NODE_ENV === 'production') {
+//     const {
+//       default: { Lato },
+//     } = await import('next/font/google')
+//     font = Lato({ weight: '400', subsets: ['latin'] })
+//   } else {
+//   }
+// })()
 
 export default function RootLayout({
   children,
@@ -34,8 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*<body className={font.className + ' h-fit'}>*/}
-      <body className={'h-fit'}>
+      <body className={font.className + ' h-fit'}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers>
             <Resizer>

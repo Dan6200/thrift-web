@@ -19,22 +19,21 @@ import { getTotalCountAtom } from '@/atoms'
 import SearchComp from '@/components/search'
 import { cn } from '@/lib/utils'
 import { signOutWrapper } from '@/app/auth'
-import { NextFont } from 'next/dist/compiled/@next/font'
+import LocalFont from 'next/font/local'
+import { resolve } from 'path'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 
-let font: NextFont
-;(async () => {
-  if (process.env.NODE_ENV === 'production') {
-    const {
-      default: { Montagu_Slab },
-    } = await import('next/font/google')
-    font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
-  } else {
-    const { default: LocalFont } = await import('next/font/local')
-    font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
-  }
-})()
+const font = LocalFont({ src: resolve('public/fonts/montagu_slab.woff2') })
+
+// ;(async () => {
+//   if (process.env.NODE_ENV === 'production') {
+//     const {
+//       default: { Montagu_Slab },
+//     } = await import('next/font/google')
+//     font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+//   }
+// })()
 
 export const NavMenuSmall = ({
   user,

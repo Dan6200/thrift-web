@@ -4,20 +4,20 @@ import { useAtomValue } from 'jotai'
 import Link from 'next/link'
 import { Slideshow } from './slideshow'
 import { Button } from './ui/button'
-import { NextFont } from 'next/dist/compiled/@next/font'
+import LocalFont from 'next/font/local'
+import path from 'path'
 
-let font: NextFont
-;(async () => {
-  if (process.env.NODE_ENV === 'production') {
-    const {
-      default: { Montagu_Slab },
-    } = await import('next/font/google')
-    font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
-  } else {
-    const { default: LocalFont } = await import('next/font/local')
-    font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
-  }
-})()
+const font = LocalFont({
+  src: __dirname + 'public/fonts/montagu_slab.woff2',
+})
+// ;(async () => {
+//   if (process.env.NODE_ENV === 'production') {
+//     const {
+//       default: { Montagu_Slab },
+//     } = await import('next/font/google')
+//     google_font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
+//   }
+// })()
 
 export function Welcome() {
   const user = useAtomValue(userAtom)
