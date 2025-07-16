@@ -1,7 +1,6 @@
 // cspell:ignore Resizer
 'use strict'
 import { Analytics } from '@vercel/analytics/react'
-import { Lato } from 'next/font/google'
 import { Resizer } from '@/components/handle-resize'
 import { Nav } from '@/components/nav'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -15,7 +14,18 @@ export const metadata = {
     'Thrift, an ecommerce platform to buy or sell any product. Still in development...',
 }
 
-const lato = Lato({ weight: '400', subsets: ['latin'] })
+let font
+;(async () => {
+  if (process.env.NODE_ENV === 'production') {
+    ;({
+      default: { Lato },
+    } = await import('next/font/google'))
+    font = Lato({ weight: '500', subsets: ['latin'] })
+  } else {
+    const LocalFont = await import('next/font/local')
+    font = LocalFont({ src: '../../public/fonts/lato.woff2' })
+  }
+})()
 
 export default function RootLayout({
   children,
@@ -24,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={lato.className + ' h-fit'}>
+      <body className={font.className + ' h-fit'}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers>
             <Resizer>

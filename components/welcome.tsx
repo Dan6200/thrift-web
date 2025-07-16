@@ -4,17 +4,20 @@ import { useAtomValue } from 'jotai'
 import Link from 'next/link'
 import { Slideshow } from './slideshow'
 import { Button } from './ui/button'
+import { NextFont } from 'next/dist/compiled/@next/font'
 
-let font
+let font: NextFont
 ;(async () => {
   if (process.env.NODE_ENV === 'production') {
-font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
-    ;({ Montagu_Slab: font } = await import('next/font/google'))
+    const {
+      default: { Montagu_Slab },
+    } = await import('next/font/google')
+    font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
   } else {
-    LocalFont = await import('next/font/local')
+    const LocalFont = await import('next/font/local')
+    font = LocalFont({ src: '../../public/fonts/montagu_slab.woff2' })
   }
 })()
-
 
 export function Welcome() {
   const user = useAtomValue(userAtom)
@@ -23,7 +26,7 @@ export function Welcome() {
       <h1 className="text-4xl w-full sm:text-5xl sm:font-semibold">
         Welcome to{' '}
         <span
-          className={`${montaguSlab.className} font-thin text-transparent bg-clip-text bg-gradient-to-r from-primary text-5xl sm:text-6xl md:text-7xl to-secondary`}
+          className={`${font?.className} font-thin text-transparent bg-clip-text bg-gradient-to-r from-primary text-5xl sm:text-6xl md:text-7xl to-secondary`}
         >
           Thrift
         </span>
