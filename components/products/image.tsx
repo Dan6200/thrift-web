@@ -11,6 +11,7 @@ export function ProductImage({
   imgData:
     | {
         filename: string
+        filepath: string
         description: string
         is_thumbnail_image: boolean
         is_landing_image: boolean
@@ -21,10 +22,10 @@ export function ProductImage({
   const placeHolder =
     'https://images.pexels.com/photos/16952091/pexels-photo-16952091/free-photo-of-wood-landscape-field-summer.jpeg'
 
-  //console.log(imgData)
+  // console.log(imgData)
 
-  if (imgData?.filename) {
-    const src = 'thrift-app-media/' + imgData.filename + '.jpg.jpg'
+  if (imgData?.filepath) {
+    const src = imgData.filepath
     const alt = imgData.description
     // Note explicitly setting version is not necessary
     return <CldImage {...{ src, alt, className }} width={600} height={600} />

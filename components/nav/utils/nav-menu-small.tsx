@@ -19,21 +19,11 @@ import { getTotalCountAtom } from '@/atoms'
 import SearchComp from '@/components/search'
 import { cn } from '@/lib/utils'
 import { signOutWrapper } from '@/app/auth'
-import LocalFont from 'next/font/local'
-import { resolve } from 'path'
+import { Montagu_Slab } from 'next/font/google'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 
-const font = LocalFont({ src: resolve('public/fonts/montagu_slab.woff2') })
-
-// ;(async () => {
-//   if (process.env.NODE_ENV === 'production') {
-//     const {
-//       default: { Montagu_Slab },
-//     } = await import('next/font/google')
-//     font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
-//   }
-// })()
+const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
 export const NavMenuSmall = ({
   user,
@@ -68,7 +58,7 @@ export const NavMenuSmall = ({
       <div className="max-w-none border-b flex flex-row items-center justify-between w-full px-4 py-4 bg-background shadow-md dark:shadow-none">
         <Link
           href="/"
-          className={`${font.className} text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold`}
+          className={`${font?.className} text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold`}
         >
           Thrift
         </Link>

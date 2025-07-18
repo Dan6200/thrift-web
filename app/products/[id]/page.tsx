@@ -28,6 +28,7 @@ export default async function ProductPage({
 const LIMIT = 100
 export async function generateStaticParams() {
   const data: unknown = await getProducts()
+  console.log(data)
   if (!isProductData(data)) {
     throw new Error('Failed to fetch products')
   }

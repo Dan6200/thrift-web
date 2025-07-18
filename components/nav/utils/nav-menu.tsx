@@ -1,6 +1,6 @@
 // cspell:ignore womens
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ModeToggle } from '../../dark-mode-toggle'
 import { Button } from '../../ui/button'
@@ -26,22 +26,12 @@ import { getTotalCountAtom } from '@/atoms'
 import { ShoppingCartDrawer } from '@/components/shopping-cart/drawer'
 import Search from '@/components/search'
 import { signOutWrapper } from '@/app/auth'
-import LocalFont from 'next/font/local'
-import path from 'path'
+import { Montagu_Slab } from 'next/font/google'
 
 type SetUser = ReturnType<typeof useSetAtom<UserAccount | null, any[], any>>
 
-const font = LocalFont({ src: path.resolve('public/fonts/montagu_slab.woff2') })
+const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
-// ;(async () => {
-//   if (process.env.NODE_ENV === 'production') {
-//     const {
-//       default: { Montagu_Slab },
-//     } = await import('next/font/google')
-//     font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
-//   }
-// })()
-//
 export function NavMenu({
   user,
   setUser,
@@ -67,7 +57,7 @@ export function NavMenu({
       <div className="justify-start flex">
         <Link
           href="/"
-          className={`${font.className} bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-2xl font-bold`}
+          className={`${font?.className} bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-2xl font-bold`}
         >
           Thrift
         </Link>

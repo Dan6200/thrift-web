@@ -10,11 +10,12 @@ export interface Product {
   net_price: number | string
   quantity_available: number
   created_at: string
+  updated_at: string
   vendor_id: string
   media: {
     filename: string
     description: string
-    is_thumbnail_image: boolean
+    is_display_image: boolean
     is_landing_image: boolean
     is_video: boolean
   }[]
@@ -26,14 +27,18 @@ export type ProductData = {
 }
 
 export function isProductData(
-  productData: unknown
+  productData: unknown,
 ): productData is ProductData {
+  console.log(productData)
   return (
-    typeof productData === 'object' &&
-    productData !== null &&
-    typeof (productData as ProductData).products === 'object' &&
-    typeof (productData as ProductData).products !== null &&
-    typeof (productData as ProductData).total_products === 'string'
+    isObj(productData, 'productData') &&
+    !isNull(productData, 'productData') &&
+    isObj((productData as ProductData).products, 'productData.products') &&
+    !isNull((productData as ProductData).products, 'productData.products') &&
+    isNumber(
+      (productData as ProductData).total_products,
+      'productData.total_products',
+    )
   )
 }
 
@@ -45,54 +50,61 @@ export function isProducts(products: unknown): products is Product[] {
 
 export function isProduct(product: unknown): product is Product {
   return (
-    isObj(product) &&
-    !isNull(product) &&
-    isNumber((product as Product).product_id) &&
-    isString((product as Product).title) &&
-    !isNull((product as Product).description) &&
-    isObj((product as Product).description) &&
-    isNumber((product as Product).category_id) &&
-    isString((product as Product).category_name) &&
-    isNumber((product as Product).subcategory_id) &&
-    isString((product as Product).subcategory_name) &&
-    isString((product as Product).vendor_id) &&
-    isNumberOrString((product as Product).list_price) &&
-    isNumberOrString((product as Product).net_price) &&
-    isString((product as Product).created_at) &&
-    isNumber((product as Product).quantity_available) &&
-    !isNull((product as Product).media) &&
-    isObj((product as Product).media) &&
-    (product as Product).media.every((media) => isString(media.filename))
+    isObj(product, 'product') &&
+    !isNull(product, 'product') &&
+    isNumber((product as Product).product_id, 'product_id') &&
+    isString((product as Product).title, 'title') &&
+    !isNull((product as Product).description, 'description') &&
+    isObj((product as Product).description, 'description') &&
+    isNumber((product as Product).category_id, 'category_id') &&
+    isString((product as Product).category_name, 'category_name') &&
+    isNumber((product as Product).subcategory_id, 'subcategory_id') &&
+    isString((product as Product).subcategory_name, 'subcategory_name') &&
+    isString((product as Product).vendor_id, 'vendor_id') &&
+    isNumberOrString((product as Product).list_price, 'list_price') &&
+    isNumberOrString((product as Product).net_price, 'net_price') &&
+    isString((product as Product).created_at, 'created_at') &&
+    isString((product as Product).updated_at, 'updated_at') &&
+    isNumber((product as Product).quantity_available, 'quantity_available') &&
+    !isNull((product as Product).media, 'media') &&
+    isObj((product as Product).media, 'media') &&
+    (product as Product).media.every((media) =>
+      isString(media.filename, 'media.filename'),
+    )
   )
 }
 
-function isObj(obj: unknown): obj is object {
+function isObj(obj: unknown, fieldName: string): obj is object {
   const condition = typeof obj === 'object'
-  if (!condition) throw new Error('must be of type object: ' + obj)
+  if (!condition) throw new Error(`${fieldName} must be of type object: ${obj}`)
   return condition
 }
 
-function isString(val: unknown): val is string {
+function isString(val: unknown, fieldName: string): val is string {
   const condition = typeof val === 'string'
-  if (!condition) throw new Error('must be of type string: ' + val)
+  if (!condition) throw new Error(`${fieldName} must be of type string: ${val}`)
   return condition
 }
 
-function isNumberOrString(val: unknown): val is number | string {
+function isNumberOrString(
+  val: unknown,
+  fieldName: string,
+): val is number | string {
   const condition = typeof val === 'number' || typeof val === 'string'
-  if (!condition) throw new Error('must be of type number or string: ' + val)
+  if (!condition)
+    throw new Error(`${fieldName} must be of type number or string: ${val}`)
   return condition
 }
 
-function isNumber(val: unknown): val is number {
+function isNumber(val: unknown, fieldName: string): val is number {
   const condition = typeof val === 'number'
-  if (!condition) throw new Error('must be of type number: ' + val)
+  if (!condition) throw new Error(`${fieldName} must be of type number: ${val}`)
   return condition
 }
 
-function isNull(val: unknown): val is null {
+function isNull(val: unknown, fieldName: string): val is null {
   const condition = val === null
-  if (condition) throw new Error('value is null: ' + val)
+  if (condition) throw new Error(`${fieldName} value is null: ${val}`)
   return condition
 }
 
