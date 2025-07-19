@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { ShoppingCartIcon, Plus } from 'lucide-react'
+// import { ShoppingCartIcon, Plus } from 'lucide-react'
 import { ShoppingCart } from '../../shopping-cart/types'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 import { ProductImage } from '../image'
 import { Product } from '../types'
-import { BuyNow } from './buy-now'
+// import { BuyNow } from './buy-now'
 import { Price } from './price'
 import { Dispatch, SetStateAction } from 'react'
 import { useSetAtom } from 'jotai'
@@ -14,13 +14,13 @@ type AddItem = ReturnType<typeof useSetAtom<null, [newProduct: Product], void>>
 type SetShoppingCart = ReturnType<typeof useSetAtom<null, [ShoppingCart], void>>
 
 export default function ProductCard({
-  shoppingCart,
+  // shoppingCart,
   product,
   MAX_TITLE_LEN,
-  isSmallScreen,
-  setShowToast,
-  addItem,
-  setShoppingCart,
+  // isSmallScreen,
+  // setShowToast,
+  // addItem,
+  // setShoppingCart,
 }: {
   setShowToast: Dispatch<SetStateAction<boolean>>
   addItem: AddItem
@@ -37,7 +37,7 @@ export default function ProductCard({
         passHref
         className="hover:bg-primary/20"
       >
-        <CardContent className="bg-background border-b p-2 flex items-center">
+        <CardContent className="bg-background border-b p-0 flex items-center">
           <ProductImage
             className="object-contain mx-auto"
             imgData={product?.media?.find((img) => img?.is_display_image)}
@@ -52,19 +52,20 @@ export default function ProductCard({
         >
           <h4 className="hover:text-primary dark:hover:text-secondary my-2 w-full whitespace-normal break-words">
             {/* remove &nbsp; that breaks ui */}
-            {product?.title.slice(0, MAX_TITLE_LEN).replace(/\u00A0/g, ' ') +
-              '...'}
+            {product?.title.length > MAX_TITLE_LEN
+              ? product?.title.slice(0, MAX_TITLE_LEN).replace(/\u00A0/g, ' ') +
+                '...'
+              : product?.title}
           </h4>
         </Link>
-        <div className="flex flex-col lg:flex-row gap-2 w-full justify-between">
-          <div className="w-full flex flex-wrap justify-between">
-            <Price
-              netPrice={product?.net_price}
-              listPrice={product?.list_price}
-            />
-          </div>
+        <Price netPrice={product?.net_price} listPrice={product?.list_price} />
+      </CardFooter>
+    </Card>
+  )
+}
+/*
           <Button
-            className="hover:bg-primary shadow-around p-2 sm:h-9 sm:w-full w-fit rounded-full self-end"
+            className="hover:bg-primary shadow-around p-2 sm:h-9 sm:w-full w-fit rounded-full self-end sm:self-center flex justify-between"
             variant="outline"
             onClick={() => {
               shoppingCart
@@ -73,18 +74,15 @@ export default function ProductCard({
               setShowToast(true)
             }}
           >
-            {/* Add To Cart*/}
+            <span className="hidden sm:block">Add To Cart</span>
             <ShoppingCartIcon />
             <Plus className="w-4" />
           </Button>
+					/*}
           {/* <BuyNow
             imgData={product?.media?.find((img) => img?.is_display_image)}
             netPrice={product?.net_price}
             listPrice={product?.list_price}
             quantityAvailable={product?.quantity_available}
-          />*/}
-        </div>
-      </CardFooter>
-    </Card>
-  )
-}
+          />
+					*/

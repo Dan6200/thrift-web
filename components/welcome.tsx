@@ -17,12 +17,12 @@ export function Welcome() {
         <span
           className={`${font?.className} font-thin text-transparent bg-clip-text bg-gradient-to-r from-primary text-5xl sm:text-6xl md:text-7xl to-secondary`}
         >
-          Thrift
+          Sellit
         </span>
       </h1>
       <div className="text-lg sm:text-xl font-thin">
         <h2>Buy and sell products of any category.</h2>
-        <h2> Find the lowest prices on Thrift!!!</h2>
+        <h2> Find the lowest prices on Sellit!!!</h2>
       </div>
       <Slideshow />
       <div className="text-base sm:text-lg flex flex-col sm:flex-row gap-3 md:gap-6 md:w-[50vw] lg:w-[30vw] md:mx-auto">

@@ -13,18 +13,16 @@ export default async function Home() {
   }
   // Move these to child components to use clients
   return (
-    <div className="parent-container mx-auto w-full">
-      <div className="container w-full mx-auto p-4">
-        <Welcome />
-        <ProductsHome products={productData.products} />
-        <Link
-          href="/products"
-          className="dark:text-blue-200 text-blue-700 block w-fit my-8 ml-[60%] sm:ml-[80%]"
-        >
-          See more
-          <MoveRight className="inline ml-2" />
-        </Link>
-      </div>
+    <div className="w-full mx-auto">
+      <Welcome />
+      <ProductsHome products={productData.products} />
+      <Link
+        href="/products"
+        className="dark:text-blue-200 text-blue-700 block w-fit my-8 ml-[60%] sm:ml-[80%]"
+      >
+        See more
+        <MoveRight className="inline ml-2" />
+      </Link>
     </div>
   )
 }

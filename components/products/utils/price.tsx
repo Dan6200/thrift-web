@@ -31,15 +31,13 @@ export const Price: FC<priceProps> = ({ netPrice, listPrice }) => {
   //       )}
   //     </>
   //   )
-  if (typeof netPrice !== 'number' || typeof listPrice !== 'number')
-    throw new Error('Invalid price type')
-  {
-    /*((listPrice - netPrice) / listPrice) * 100 > 5 && (
-        <p className="">
-          - {Math.ceil(((listPrice - netPrice) / listPrice) * 100)}%
-        </p>
-      )*/
-  }
+  // if (typeof netPrice !== 'number' || typeof listPrice !== 'number')
+  //   throw new Error('Invalid price type')
+  // ((listPrice - netPrice) / listPrice) * 100 > 5 && (
+  //       <p className="">
+  //         - {Math.ceil(((listPrice - netPrice) / listPrice) * 100)}%
+  //       </p>
+  //     )
   return (
     <p className="">
       {netPrice.toLocaleString('en-NG', {

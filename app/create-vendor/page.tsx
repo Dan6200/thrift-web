@@ -14,7 +14,7 @@ export default function CreateVendorPage() {
     <div className="container flex overflow-hidden h-[80vh] mx-auto p-4 mt-20">
       <Card className="w-full h-fit rounded-lg space-y-4 sm:w-4/5 p-8 mx-auto shadow-lg shadow-primary">
         <CardHeader className="w-full mx-auto text-2xl font-bold text-center">
-          Start Selling On Thrift!
+          Start Selling On Sellit!
         </CardHeader>
         <CardContent className="space-x-8 flex items-start">
           <Image
