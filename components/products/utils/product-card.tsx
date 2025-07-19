@@ -37,10 +37,12 @@ export default function ProductCard({
         passHref
         className="hover:bg-primary/20"
       >
-        <CardContent className="bg-background border-b p-0 flex items-center">
+        <CardContent className="bg-background h-[20rem] xl:w-[20rem] border-b p-0 flex items-center">
           <ProductImage
             className="object-contain mx-auto"
             imgData={product?.media?.find((img) => img?.is_display_image)}
+            width={512}
+            height={512}
           />
         </CardContent>
       </Link>

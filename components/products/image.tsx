@@ -6,6 +6,8 @@ import Image from 'next/image'
 export function ProductImage({
   className,
   imgData,
+  width,
+  height,
 }: {
   className: string
   imgData:
@@ -26,14 +28,14 @@ export function ProductImage({
     const src = imgData.filepath
     const alt = imgData.description
     // Note explicitly setting version is not necessary
-    return <CldImage {...{ src, alt, className }} width={600} height={600} />
+    return <CldImage {...{ src, alt, className, width, height }} />
   }
   return (
     <Image
       src={placeHolder}
       alt={'placeholder'}
-      width={600}
-      height={600}
+      width={512}
+      height={512}
       className={className}
     />
   )

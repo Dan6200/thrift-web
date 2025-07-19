@@ -22,7 +22,7 @@ export const ProductsTiles = ({
   productsToDisplay: Product[]
 }) => {
   const isSmallScreen = useAtomValue(isSmallScreenAtom)
-  const MAX_TITLE_LEN = isSmallScreen ? 50 : 90
+  const MAX_TITLE_LEN = isSmallScreen ? 15 : 50
   const [shoppingCart, setShoppingCart] = useAtom(shoppingCartAtom)
   const addItem = useSetAtom(addItemAtom)
   const totalItems = useAtomValue(getTotalCountAtom)
