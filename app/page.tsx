@@ -13,7 +13,7 @@ export default async function Home() {
   }
   // Move these to child components to use clients
   return (
-    <div className="mx-auto w-full">
+    <div className="parent-container mx-auto w-full">
       <div className="container w-full mx-auto p-4">
         <Welcome />
         <ProductsHome products={productData.products} />

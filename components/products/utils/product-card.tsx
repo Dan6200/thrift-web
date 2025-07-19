@@ -31,15 +31,15 @@ export default function ProductCard({
   isSmallScreen: boolean
 }) {
   return (
-    <Card className="flex flex-col w-full sm:w-[30vw] lg:w-[22vw] h-[28rem] overflow-hidden rounded-sm">
+    <Card className="flex flex-col w-full overflow-hidden rounded-sm">
       <Link
         href={`/products/${product?.product_id}`}
         passHref
         className="hover:bg-primary/20"
       >
-        <CardContent className="bg-white border-b p-2 w-full flex items-center">
+        <CardContent className="bg-background border-b p-2 flex items-center">
           <ProductImage
-            className="object-contain w-full h-44"
+            className="object-contain mx-auto"
             imgData={product?.media?.find((img) => img?.is_display_image)}
           />
         </CardContent>
@@ -55,16 +55,16 @@ export default function ProductCard({
             {product?.title.slice(0, MAX_TITLE_LEN).replace(/\u00A0/g, ' ') +
               '...'}
           </h4>
+        </Link>
+        <div className="flex flex-col lg:flex-row gap-2 w-full justify-between">
           <div className="w-full flex flex-wrap justify-between">
             <Price
               netPrice={product?.net_price}
               listPrice={product?.list_price}
             />
           </div>
-        </Link>
-        <div className="flex flex-col lg:flex-row gap-2 w-full justify-between">
           <Button
-            className="hover:bg-primary shadow-around p-1 h-9 w-full"
+            className="hover:bg-primary shadow-around p-2 sm:h-9 sm:w-full w-fit rounded-full self-end"
             variant="outline"
             onClick={() => {
               shoppingCart
@@ -73,22 +73,16 @@ export default function ProductCard({
               setShowToast(true)
             }}
           >
-            {/*isSmallScreen ? (
-              <>
-                <ShoppingCartIcon />
-                <Plus className="w-4" />
-              </>
-            ) : (
-              'Add To Cart'
-						)*/}
-            Add To Cart
+            {/* Add To Cart*/}
+            <ShoppingCartIcon />
+            <Plus className="w-4" />
           </Button>
-          <BuyNow
+          {/* <BuyNow
             imgData={product?.media?.find((img) => img?.is_display_image)}
             netPrice={product?.net_price}
             listPrice={product?.list_price}
             quantityAvailable={product?.quantity_available}
-          />
+          />*/}
         </div>
       </CardFooter>
     </Card>

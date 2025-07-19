@@ -23,19 +23,18 @@ export interface Product {
 
 export type ProductData = {
   products: Product[]
-  total_products: number
+  total_products: string
 }
 
 export function isProductData(
   productData: unknown,
 ): productData is ProductData {
-  console.log(productData)
   return (
     isObj(productData, 'productData') &&
     !isNull(productData, 'productData') &&
     isObj((productData as ProductData).products, 'productData.products') &&
     !isNull((productData as ProductData).products, 'productData.products') &&
-    isNumber(
+    isString(
       (productData as ProductData).total_products,
       'productData.total_products',
     )
@@ -66,7 +65,11 @@ export function isProduct(product: unknown): product is Product {
     isString((product as Product).created_at, 'created_at') &&
     isString((product as Product).updated_at, 'updated_at') &&
     isNumber((product as Product).quantity_available, 'quantity_available') &&
-    !isNull((product as Product).media, 'media') &&
+    !isNull(
+      (product as Product).media,
+      'media',
+      (product as Product).product_id,
+    ) &&
     isObj((product as Product).media, 'media') &&
     (product as Product).media.every((media) =>
       isString(media.filename, 'media.filename'),
@@ -102,9 +105,16 @@ function isNumber(val: unknown, fieldName: string): val is number {
   return condition
 }
 
-function isNull(val: unknown, fieldName: string): val is null {
+function isNull(
+  val: unknown,
+  fieldName: string,
+  product_id?: string | number,
+): val is null {
   const condition = val === null
-  if (condition) throw new Error(`${fieldName} value is null: ${val}`)
+  if (condition)
+    throw new Error(
+      `${fieldName} value is null: ${val}, product_id?: ${product_id ?? ''}`,
+    )
   return condition
 }
 

@@ -18,6 +18,7 @@ export default async function ProductPage({
   }
   if (!isProduct(response)) throw new Error('Invalid product')
   const product = response
+  console.log(product)
   return <Product product={product} />
 }
 
@@ -28,7 +29,6 @@ export default async function ProductPage({
 const LIMIT = 100
 export async function generateStaticParams() {
   const data: unknown = await getProducts()
-  console.log(data)
   if (!isProductData(data)) {
     throw new Error('Failed to fetch products')
   }

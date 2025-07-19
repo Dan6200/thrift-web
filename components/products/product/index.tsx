@@ -9,12 +9,13 @@ import { Button } from '../../ui/button'
 import { Card, CardContent } from '../../ui/card'
 import { GoBackLink } from '../go-back-link'
 import { ProductImage } from '../image'
-import { Product } from '../types'
+import { Product as ProductType } from '../types'
 import { BuyNow } from '../utils/buy-now'
 import { Price } from './utils/price'
 
-export function Product({ product }: { product: Product }) {
+export function Product({ product }: { product: ProductType }) {
   const displayImg = product?.media?.find((img) => img?.is_display_image)
+  console.log(displayImg)
   const [shoppingCart, setShoppingCart] = useAtom(shoppingCartAtom)
   const addItem = useSetAtom(addItemAtom)
   const totalItems = useAtomValue(getTotalCountAtom)

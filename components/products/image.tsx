@@ -22,7 +22,7 @@ export function ProductImage({
   const placeHolder =
     'https://images.pexels.com/photos/16952091/pexels-photo-16952091/free-photo-of-wood-landscape-field-summer.jpeg'
 
-  // console.log(imgData)
+  console.log(imgData)
 
   if (imgData?.filepath) {
     const src = imgData.filepath
