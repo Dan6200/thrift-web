@@ -9,6 +9,7 @@ import { Product } from '../types'
 import { Price } from './price'
 import { Dispatch, SetStateAction } from 'react'
 import { useSetAtom } from 'jotai'
+import { Title } from './title'
 
 type AddItem = ReturnType<typeof useSetAtom<null, [newProduct: Product], void>>
 type SetShoppingCart = ReturnType<typeof useSetAtom<null, [ShoppingCart], void>>
@@ -16,20 +17,19 @@ type SetShoppingCart = ReturnType<typeof useSetAtom<null, [ShoppingCart], void>>
 export default function ProductCard({
   // shoppingCart,
   product,
-  MAX_TITLE_LEN,
   // isSmallScreen,
   // setShowToast,
   // addItem,
   // setShoppingCart,
 }: {
-  setShowToast: Dispatch<SetStateAction<boolean>>
-  addItem: AddItem
-  setShoppingCart: SetShoppingCart
-  shoppingCart: ShoppingCart | null
   product: Product
-  MAX_TITLE_LEN: number
-  isSmallScreen: boolean
+  // setShowToast: Dispatch<SetStateAction<boolean>>
+  // addItem: AddItem
+  // setShoppingCart: SetShoppingCart
+  // shoppingCart: ShoppingCart | null
+  // isSmallScreen: boolean
 }) {
+  // const MAX_TITLE_LEN = isSmallScreen ? 15 : 50
   return (
     <Card className="flex flex-col w-full overflow-hidden rounded-sm">
       <Link
@@ -37,29 +37,17 @@ export default function ProductCard({
         passHref
         className="hover:bg-primary/20"
       >
-        <CardContent className="bg-background h-[20rem] xl:w-[20rem] border-b p-0 flex items-center">
+        <CardContent className="bg-background h-[16rem] border-b p-0 flex items-center">
           <ProductImage
             className="object-contain mx-auto"
             imgData={product?.media?.find((img) => img?.is_display_image)}
-            width={512}
-            height={512}
+            width={256}
+            height={256}
           />
         </CardContent>
       </Link>
       <CardFooter className="p-2 sm:p-4 flex flex-col flex-1 justify-between">
-        <Link
-          href={`/products/${product?.product_id}`}
-          passHref
-          className="active:text-accent h-[50%] lg:h-[65%] flex flex-col justify-between"
-        >
-          <h4 className="hover:text-primary dark:hover:text-secondary my-2 w-full whitespace-normal break-words">
-            {/* remove &nbsp; that breaks ui */}
-            {product?.title.length > MAX_TITLE_LEN
-              ? product?.title.slice(0, MAX_TITLE_LEN).replace(/\u00A0/g, ' ') +
-                '...'
-              : product?.title}
-          </h4>
-        </Link>
+        <Title title={product?.title} product_id={product?.product_id} />
         <Price netPrice={product?.net_price} listPrice={product?.list_price} />
       </CardFooter>
     </Card>

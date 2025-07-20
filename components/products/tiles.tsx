@@ -2,12 +2,7 @@
 import Paginate from '../pagination'
 import { Product } from './types'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
-import {
-  addItemAtom,
-  getTotalCountAtom,
-  isSmallScreenAtom,
-  shoppingCartAtom,
-} from '@/atoms'
+import { addItemAtom, getTotalCountAtom, shoppingCartAtom } from '@/atoms'
 import { useToast } from '../ui/use-toast'
 import { useEffect, useState } from 'react'
 import ProductCard from './utils/product-card'
@@ -21,8 +16,6 @@ export const ProductsTiles = ({
   itemsPerPage?: number
   productsToDisplay: Product[]
 }) => {
-  const isSmallScreen = useAtomValue(isSmallScreenAtom)
-  const MAX_TITLE_LEN = isSmallScreen ? 15 : 50
   const [shoppingCart, setShoppingCart] = useAtom(shoppingCartAtom)
   const addItem = useSetAtom(addItemAtom)
   const totalItems = useAtomValue(getTotalCountAtom)
@@ -49,8 +42,7 @@ export const ProductsTiles = ({
               setShowToast,
               shoppingCart,
               product,
-              MAX_TITLE_LEN,
-              isSmallScreen,
+              // isSmallScreen,
             }}
           />
         ))}

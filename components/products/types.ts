@@ -1,3 +1,11 @@
+export type ImgData = {
+  filename: string
+  description: string
+  is_display_image: boolean
+  is_landing_image: boolean
+  is_video: boolean
+} | null
+
 export interface Product {
   product_id: number
   title: string
@@ -12,13 +20,9 @@ export interface Product {
   created_at: string
   updated_at: string
   vendor_id: string
-  media: {
-    filename: string
-    description: string
-    is_display_image: boolean
-    is_landing_image: boolean
-    is_video: boolean
-  }[]
+  average_rating: number | null
+  review_count: number | null
+  media: ImgData[]
 }
 
 export type ProductData = {
@@ -60,8 +64,8 @@ export function isProduct(product: unknown): product is Product {
     isNumber((product as Product).subcategory_id, 'subcategory_id') &&
     isString((product as Product).subcategory_name, 'subcategory_name') &&
     isString((product as Product).vendor_id, 'vendor_id') &&
-    isNumberOrString((product as Product).list_price, 'list_price') &&
-    isNumberOrString((product as Product).net_price, 'net_price') &&
+    isNumber((product as Product).list_price, 'list_price') &&
+    isNumber((product as Product).net_price, 'net_price') &&
     isString((product as Product).created_at, 'created_at') &&
     isString((product as Product).updated_at, 'updated_at') &&
     isNumber((product as Product).quantity_available, 'quantity_available') &&
@@ -117,13 +121,3 @@ function isNull(
     )
   return condition
 }
-
-export type ImgData =
-  | {
-      filename: string
-      description: string
-      is_thumbnail_image: boolean
-      is_landing_image: boolean
-      is_video: boolean
-    }
-  | undefined
