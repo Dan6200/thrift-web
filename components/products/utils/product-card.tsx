@@ -5,6 +5,7 @@ import { Product } from '../types'
 import { Price } from './price'
 import { Title } from './title'
 import { Ratings } from './rating'
+import { Discount } from './discount'
 
 export default function ProductCard({ product }: { product: Product }) {
   if (!product?.average_rating) return null
@@ -13,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <Link
         href={`/products/${product?.product_id}`}
         passHref
-        className="hover:bg-primary/20"
+        className="hover:bg-primary/20 relative"
       >
         <CardContent className="bg-background h-[10rem] sm:h-[16rem] border-b p-0 flex items-center">
           <ProductImage
@@ -23,6 +24,10 @@ export default function ProductCard({ product }: { product: Product }) {
             height={256}
           />
         </CardContent>
+        <Discount
+          listPrice={product?.list_price}
+          netPrice={product?.net_price}
+        />
       </Link>
       <CardFooter className="p-2 sm:p-4 flex flex-1 flex-col gap-2 sm:gap-4 justify-between">
         <Title title={product?.title} product_id={product?.product_id} />

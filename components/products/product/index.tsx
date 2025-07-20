@@ -52,6 +52,8 @@ export function Product({ product }: { product: ProductType }) {
             <ProductImage
               imgData={displayImg}
               className="object-contain py-4 w-[95%] mx-auto h-full"
+              width={512}
+              height={512}
             />
           </div>
           <div className="p-0 flex flex-col my-4 lg:p-4 w-full justify-between lg:h-48 lg:text-lg">

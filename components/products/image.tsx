@@ -2,6 +2,7 @@
 'use client'
 import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
+import { ImgData } from './types'
 
 export function ProductImage({
   className,
@@ -10,16 +11,9 @@ export function ProductImage({
   height,
 }: {
   className: string
-  imgData:
-    | {
-        filename: string
-        filepath: string
-        description: string
-        is_thumbnail_image: boolean
-        is_landing_image: boolean
-        is_video: boolean
-      }
-    | undefined
+  width: number
+  height: number
+  imgData: ImgData
 }) {
   const placeHolder =
     'https://images.pexels.com/photos/16952091/pexels-photo-16952091/free-photo-of-wood-landscape-field-summer.jpeg'

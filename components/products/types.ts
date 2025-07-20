@@ -1,5 +1,6 @@
 export type ImgData = {
   filename: string
+  filepath: string
   description: string
   is_display_image: boolean
   is_landing_image: boolean
@@ -14,8 +15,8 @@ export interface Product {
   subcategory_id: number
   subcategory_name: string
   description: string[]
-  list_price: number | string
-  net_price: number | string
+  list_price: number
+  net_price: number
   quantity_available: number
   created_at: string
   updated_at: string
