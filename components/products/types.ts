@@ -4,7 +4,7 @@ export type ImgData = {
   is_display_image: boolean
   is_landing_image: boolean
   is_video: boolean
-} | null
+}
 
 export interface Product {
   product_id: number
@@ -90,16 +90,6 @@ function isObj(obj: unknown, fieldName: string): obj is object {
 function isString(val: unknown, fieldName: string): val is string {
   const condition = typeof val === 'string'
   if (!condition) throw new Error(`${fieldName} must be of type string: ${val}`)
-  return condition
-}
-
-function isNumberOrString(
-  val: unknown,
-  fieldName: string,
-): val is number | string {
-  const condition = typeof val === 'number' || typeof val === 'string'
-  if (!condition)
-    throw new Error(`${fieldName} must be of type number or string: ${val}`)
   return condition
 }
 

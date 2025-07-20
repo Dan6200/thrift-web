@@ -9,18 +9,20 @@ export function Title({
   product_id,
 }: Pick<Product, 'title' | 'product_id'>) {
   const isSmallScreen = useAtomValue(isSmallScreenAtom)
-  const MAX_TITLE_LEN = isSmallScreen ? 15 : 50
+  // TODO: Use css to truncate based on pixel size...
+  const MAX_TITLE_LEN = isSmallScreen ? 10 : 50
   return (
     <Link
       href={`/products/${product_id}`}
       passHref
-      className="active:text-accent h-[50%] lg:h-[65%] flex flex-col justify-between"
+      className="active:text-accent w-full h-[50%] lg:h-[65%] flex flex-col justify-between"
     >
-      <h4 className="hover:text-primary dark:hover:text-secondary my-2 w-full whitespace-normal break-words">
+      <h4 className="hover:text-primary dark:hover:text-secondary single-line-truncate-responsive mx-auto my-2 w-full whitespace-normal break-words">
         {/* remove &nbsp; that breaks ui */}
-        {title.length > MAX_TITLE_LEN
+        {/*title.length > MAX_TITLE_LEN
           ? title.slice(0, MAX_TITLE_LEN).replace(/\u00A0/g, ' ') + '...'
-          : title}
+          : title*/}
+        {title}
       </h4>
     </Link>
   )

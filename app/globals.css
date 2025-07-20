@@ -95,3 +95,18 @@
   /* IE 10+ */
   -ms-overflow-style: none;
 }
+
+.single-line-truncate-responsive {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+
+  /*
+   * The magic is in how the parent or element's width is defined.
+   * If the parent uses flexible units (e.g., percentages, flex-grow)
+   * or if you use vw/rem for the element's width, it will automatically adapt.
+   */
+  width: 85%; /* Example: 90% of its parent's width */
+  margin: 20px auto; /* Center it */
+}

@@ -17,7 +17,7 @@ type SetShoppingCart = ReturnType<typeof useSetAtom<null, [ShoppingCart], void>>
 export default function ProductCard({
   // shoppingCart,
   product,
-  // isSmallScreen,
+  isSmallScreen,
   // setShowToast,
   // addItem,
   // setShoppingCart,
@@ -27,26 +27,26 @@ export default function ProductCard({
   // addItem: AddItem
   // setShoppingCart: SetShoppingCart
   // shoppingCart: ShoppingCart | null
-  // isSmallScreen: boolean
+  isSmallScreen: boolean
 }) {
   // const MAX_TITLE_LEN = isSmallScreen ? 15 : 50
   return (
-    <Card className="flex flex-col w-full overflow-hidden rounded-sm">
+    <Card className="h-fit flex flex-col w-full overflow-hidden rounded-sm">
       <Link
         href={`/products/${product?.product_id}`}
         passHref
         className="hover:bg-primary/20"
       >
-        <CardContent className="bg-background h-[16rem] border-b p-0 flex items-center">
+        <CardContent className="bg-background h-[10rem] sm:h-[16rem] border-b p-0 flex items-center">
           <ProductImage
-            className="object-contain mx-auto"
-            imgData={product?.media?.find((img) => img?.is_display_image)}
+            className="object-contain mx-auto h-[10rem] sm:h-[16rem]"
+            imgData={product?.media.find((img) => img?.is_display_image)}
             width={256}
             height={256}
           />
         </CardContent>
       </Link>
-      <CardFooter className="p-2 sm:p-4 flex flex-col flex-1 justify-between">
+      <CardFooter className="p-2 sm:p-4 flex flex-1 flex-col justify-between">
         <Title title={product?.title} product_id={product?.product_id} />
         <Price netPrice={product?.net_price} listPrice={product?.list_price} />
       </CardFooter>
