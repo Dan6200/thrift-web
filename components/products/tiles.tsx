@@ -1,4 +1,3 @@
-'use client'
 import Paginate from '../pagination'
 import { Product } from './types'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
@@ -45,8 +44,6 @@ export const ProductsTiles = ({
             {...{
               setShoppingCart,
               addItem,
-              setShowToast,
-              shoppingCart,
               product,
               isSmallScreen,
             }}

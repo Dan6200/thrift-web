@@ -28,7 +28,15 @@ export function ProductImage({
     const src = imgData.filepath
     const alt = imgData.description
     // Note explicitly setting version is not necessary
-    return <CldImage {...{ src, alt, className, width, height }} />
+    return (
+      <CldImage
+        {...{ src, alt, className, width, height }}
+        style={{
+          objectFit: 'cover',
+          objectPosition: 'center',
+        }}
+      />
+    )
   }
   return (
     <Image
