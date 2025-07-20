@@ -24,7 +24,7 @@ export default function ProductCard({ product }: { product: Product }) {
           />
         </CardContent>
       </Link>
-      <CardFooter className="p-2 sm:p-4 flex flex-1 flex-col gap-4 justify-between">
+      <CardFooter className="p-2 sm:p-4 flex flex-1 flex-col gap-2 sm:gap-4 justify-between">
         <Title title={product?.title} product_id={product?.product_id} />
         <Ratings
           average_rating={product?.average_rating}

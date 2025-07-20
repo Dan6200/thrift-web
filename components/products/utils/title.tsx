@@ -12,7 +12,7 @@ export function Title({
       passHref
       className="active:text-accent w-full flex justify-between"
     >
-      <h4 className="hover:text-primary dark:hover:text-secondary single-line-truncate-responsive w-full whitespace-normal break-words">
+      <h4 className="sm:text-xl hover:text-primary dark:hover:text-secondary single-line-truncate-responsive w-full whitespace-normal break-words">
         {title}
       </h4>
     </Link>

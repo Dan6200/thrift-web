@@ -106,6 +106,12 @@
    * If the parent uses flexible units (e.g., percentages, flex-grow)
    * or if you use vw/rem for the element's width, it will automatically adapt.
    */
-  width: 85%; /* Example: 90% of its parent's width */
+  width: 95%; /* Example: 90% of its parent's width */
   margin: 0 auto; /* Center it */
+}
+
+@media (min-width: 640px) {
+  .single-line-truncate-responsive {
+    width: 85%; /* Example: 90% of its parent's width */
+  }
 }

@@ -39,7 +39,7 @@ export const Price: FC<priceProps> = ({ netPrice, listPrice }) => {
   //       </p>
   //     )
   return (
-    <p className="">
+    <p className="text-md sm:text-xl">
       {netPrice.toLocaleString('en-NG', {
         currency: 'NGN',
         style: 'currency',
