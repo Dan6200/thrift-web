@@ -31,26 +31,13 @@ export const BuyNow = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        {isProductPage ? (
-          <Button className="text-base text-primary-foreground hover:transition-colors font-bold w-full bg-secondary flex-1 bg-gradient-to-r hover:bg-gradient-to-l from-secondary to-primary">
-            Buy Now
-          </Button>
-        ) : (
-          <Button
-            className="hover:bg-green-500 p-1 h-9 w-full"
-            variant="outline"
-          >
-            {/*isSmallScreen ? (
-              <>
-                <ShoppingCart />
-                <Check className="w-4" />
-              </>
-            ) : (
-              'Buy Now'
-						)*/}
-            Buy Now
-          </Button>
-        )}
+        <Button className="text-base text-primary-foreground hover:transition-colors font-bold w-full bg-secondary flex-1 bg-gradient-to-r hover:bg-gradient-to-l from-secondary to-primary">
+          Buy Now
+          <>
+            <ShoppingCart />
+            <Check className="w-4" />
+          </>
+        </Button>
       </DialogTrigger>
       <DialogContent className="transition-all ease-in-out overflow-y-scroll rounded-md w-[90vw] p-8 py-16 md:p-16 h-[90vh] sm:h-[80vh] sm:w-[80vw] md:w-[70vw] max-w-none">
         {isSelectingQuantity ? (

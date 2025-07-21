@@ -14,7 +14,9 @@ import { BuyNow } from '../utils/buy-now'
 import { Price } from './utils/price'
 
 export function Product({ product }: { product: ProductType }) {
-  const displayImg = product?.media?.find((img) => img?.is_display_image)
+  const displayImg = product.media.find((img) => img.is_display_image)
+  if (!displayImg)
+    throw new Error('Cant find display image for product detail--Tag: 1')
   const [shoppingCart, setShoppingCart] = useAtom(shoppingCartAtom)
   const addItem = useSetAtom(addItemAtom)
   const totalItems = useAtomValue(getTotalCountAtom)
@@ -32,7 +34,7 @@ export function Product({ product }: { product: ProductType }) {
         <MoveLeft className="inline mr-4" />
         Go back
       </GoBackLink>
-      <h2 className="text-lg sm:text-xl font-bold text-justify mb-8 break-words">
+      <h2 className="text-lg sm:text-xl lg:text-2xl my-8 sm:my-16 font-bold text-justify break-words">
         {/* remove &nbsp;, that breaks the ui */}
         {product?.title.replace(/\u00A0/, ' ')}
       </h2>
@@ -47,12 +49,12 @@ export function Product({ product }: { product: ProductType }) {
         >
           <div
             id="img-bg"
-            className="bg-white h-96 sm:h-[26rem] rounded-lg w-full"
+            className="bg-white h-96 sm:h-[44rem] rounded-lg w-full"
           >
             <ProductImage
               imgData={displayImg}
-              className="object-contain py-4 w-[95%] mx-auto h-full"
-              width={512}
+              className="object-contain py-4 mx-auto h-full"
+              width={640}
               height={512}
             />
           </div>
@@ -61,7 +63,7 @@ export function Product({ product }: { product: ProductType }) {
               netPrice={product?.net_price}
               listPrice={product?.list_price}
             />
-            <div className="flex mb-4">
+            <div className="text-md flex mb-4">
               <p>
                 items left:{'\u00A0'.repeat(4)}
                 {product.quantity_available}
@@ -69,7 +71,7 @@ export function Product({ product }: { product: ProductType }) {
             </div>
             <div className="flex w-full mb-4 gap-2 sm:gap-4 justify-between">
               <Button
-                className="text-base font-bold w-full flex-1"
+                className="text-base h-[4rem] font-bold w-full flex-1"
                 onClick={() => {
                   shoppingCart
                     ? addItem(product)
@@ -101,7 +103,7 @@ export function Product({ product }: { product: ProductType }) {
             <div className="gap-4 flex flex-col mb-8">
               {product?.description?.map((desc, index) => (
                 <p
-                  className="text-base break-words font-light md:text-lg"
+                  className="text-md break-words font-light md:text-xl"
                   key={index}
                 >
                   {/* remove &nbsp; that breaks ui */}
