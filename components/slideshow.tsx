@@ -9,7 +9,7 @@ import { isSmallScreenAtom } from '@/atoms'
 export function Slideshow(props: PropsWithChildren) {
   const isSmallScreen = useAtomValue(isSmallScreenAtom)
   const images: any[] = [
-    { src: '/banner.png', category: 'Clothing' },
+    { src: '/laptop-unboxing.mp4', category: 'Clothing' },
     { src: '/banner-2.png', category: 'Clothing' },
     { src: '/banner-3.png', category: 'Electronics' },
   ]
@@ -21,7 +21,7 @@ export function Slideshow(props: PropsWithChildren) {
         <Link rel="preload" key={src} href={`/categories/${category}`}>
           {isSmallScreen ? (
             <Image
-							priority={true}
+              priority={true}
               key={src}
               src={src}
               alt={alt}

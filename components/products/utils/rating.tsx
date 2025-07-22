@@ -15,8 +15,8 @@ export function Ratings({
               // To offset the translate-x later
               <Star
                 key={`full-${i}`}
-                className="sm:w-6 w-4 text-primary"
-                fill="hsl(268 66% 46%)"
+                className="sm:w-6 w-4 text-secondary"
+                fill="hsl(358 88% 58%)"
               />
             )
           }
@@ -26,8 +26,8 @@ export function Ratings({
               <>
                 <Star
                   key={`half-${i}-a`}
-                  className="sm:w-6 w-4 text-primary"
-                  fill="hsl(268 66% 46%)"
+                  className="sm:w-6 w-4 text-secondary"
+                  fill="hsl(358 88% 58%)"
                   style={{ clipPath: `inset(0 ${(1 - diff) * 100}% 0 0)` }}
                 />
                 <Star

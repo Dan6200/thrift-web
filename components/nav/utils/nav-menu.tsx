@@ -59,7 +59,7 @@ export function NavMenu({
           href="/"
           className={`${font?.className} bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-2xl font-bold`}
         >
-          Sellit
+          Thrift
         </Link>
         <NavigationMenuList className="ml-16">
           <NavigationMenuItem>
@@ -73,7 +73,7 @@ export function NavMenu({
                       href="/"
                     >
                       <div className="mb-2 mt-4 text-lg font-bold">
-                        Sellit Commerce
+                        Thrift Commerce
                       </div>
                       <p className="text-sm leading-tight text-primary-foreground dark:text-primary-foreground/80">
                         Shop new handpicked deals in categories such as

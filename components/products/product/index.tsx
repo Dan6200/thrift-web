@@ -14,6 +14,7 @@ import { BuyNow } from '../utils/buy-now'
 import { Price } from './utils/price'
 
 export function Product({ product }: { product: ProductType }) {
+  console.log(product)
   const displayImg = product.media.find((img) => img.is_display_image)
   if (!displayImg)
     throw new Error('Cant find display image for product detail--Tag: 1')
@@ -71,7 +72,7 @@ export function Product({ product }: { product: ProductType }) {
             </div>
             <div className="flex w-full mb-4 gap-2 sm:gap-4 justify-between">
               <Button
-                className="text-base h-[4rem] font-bold w-full flex-1"
+                className="text-base h-[3rem] font-bold w-full flex-1"
                 onClick={() => {
                   shoppingCart
                     ? addItem(product)

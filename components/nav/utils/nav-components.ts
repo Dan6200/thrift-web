@@ -6,7 +6,7 @@ export const components: {
   {
     title: 'Computers & Tablets',
     href: '/categories/computers',
-    description: 'Shop new laptop, desktop computers and tablets on Sellit.',
+    description: 'Shop new laptop, desktop computers and tablets on Thrift.',
   },
   {
     title: 'Electronic Accessories',
@@ -22,12 +22,12 @@ export const components: {
   {
     title: "Men's Fashion",
     href: '/categories/mens-fashion',
-    description: "Shop men's wear, and fashion accessories here on Sellit.",
+    description: "Shop men's wear, and fashion accessories here on Thrift.",
   },
   {
     title: "Women's Fashion",
     href: '/categories/womens-fashion',
     description:
-      "Shop new women's wear, and women's fashion accessories here on Sellit.",
+      "Shop new women's wear, and women's fashion accessories here on Thrift.",
   },
 ]

@@ -11,7 +11,7 @@ import { Product } from './types'
  * */
 
 export const ProductsHome = ({ products }: { products: Product[] }) => {
-  const itemsPerPage = 10
+  const itemsPerPage = 12
   const productsToDisplay = products.slice(0, itemsPerPage)
 
   return (

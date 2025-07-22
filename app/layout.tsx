@@ -10,9 +10,9 @@ import Providers from './providers'
 import { Lato } from 'next/font/google'
 
 export const metadata = {
-  title: 'Sellit e-commerce Platform',
+  title: 'Thrift e-commerce Platform',
   description:
-    'Sellit is a modern e-commerce platform designed for seamless buying and selling of products. Discover a wide range of items or easily list your own for sale.',
+    'Thrift is a modern e-commerce platform designed for seamless buying and selling of products. Discover a wide range of items or easily list your own for sale.',
 }
 
 const font = Lato({ weight: '400', subsets: ['latin'] })

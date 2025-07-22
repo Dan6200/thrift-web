@@ -18,7 +18,6 @@ export default async function ProductPage({
   }
   if (!isProduct(response)) throw new Error('Invalid product')
   const product = response
-  console.log(product)
   return <Product product={product} />
 }
 

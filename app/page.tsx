@@ -4,6 +4,10 @@ import { isProductData } from '@/components/products/types'
 import { ProductsHome } from '@/components/products/home-page'
 import { MoveRight } from 'lucide-react'
 import { Welcome } from '@/components/welcome'
+import { Montagu_Slab } from 'next/font/google'
+import { Hero } from './hero'
+
+const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
 export default async function Home() {
   // fetch and display products on home page
@@ -14,7 +18,9 @@ export default async function Home() {
   // Move these to child components to use clients
   return (
     <div className="w-full mx-auto">
-      <Welcome />
+      <Hero className={font?.className}>
+        Create lasting memories shopping from Thrift.
+      </Hero>
       <ProductsHome products={productData.products} />
       <Link
         href="/products"

@@ -24,7 +24,6 @@ export function ProductSkeleton() {
           id="product-content-skeleton"
           className="flex flex-col p-0 w-full lg:w-[45%] lg:h-full items-center justify-between"
         >
-          ""
           <div
             className="animate-pulse bg-white h-96 sm:h-[44rem] rounded-lg mx-auto py-4 w-full"
             id="img-skeleton"

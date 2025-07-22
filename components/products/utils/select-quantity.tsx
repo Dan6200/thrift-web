@@ -37,6 +37,8 @@ export const SelectQuantity = ({
         <ProductImage
           className="object-contain sm:w-[80%] mx-auto max-h-40 object-center"
           imgData={imgData}
+          width={256}
+          height={128}
         />
       </div>
       <div className="flex flex-col md:flex-row mx-auto mt-8 w-full items-center">

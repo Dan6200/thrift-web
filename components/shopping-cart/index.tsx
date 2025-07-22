@@ -67,6 +67,8 @@ export function ShoppingCart({
                     imgData={product?.media?.find(
                       (img) => img?.is_display_image,
                     )}
+                    width={128}
+                    height={128}
                   />
                   <div className="w-full flex sm:px-8 justify-between">
                     <div className="flex justify-between sm:justify-normal items-center">

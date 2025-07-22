@@ -60,7 +60,7 @@ export const NavMenuSmall = ({
           href="/"
           className={`${font?.className} text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold`}
         >
-          Sellit
+          Thrift
         </Link>
         <div className="flex items-center space-x-4">
           <Button
@@ -131,7 +131,7 @@ export const NavMenuSmall = ({
                       href="/"
                     >
                       <div className="mb-2 mt-4 text-lg font-medium">
-                        Sellit Commerce
+                        Thrift Commerce
                       </div>
                       <p className="text-sm leading-tight text-primary-foreground dark:text-primary-foreground/80">
                         Shop new handpicked deals in categories such as

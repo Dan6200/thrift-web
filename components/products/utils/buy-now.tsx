@@ -4,14 +4,13 @@ import { Dialog, DialogContent, DialogTrigger } from '../../ui/dialog'
 import { useState } from 'react'
 import { Check, ShoppingCart } from 'lucide-react'
 import { useAtomValue } from 'jotai'
-import { isSmallScreenAtom, shippingInfoAtom } from '@/atoms'
+import { shippingInfoAtom } from '@/atoms'
 import { ImgData } from '../types'
 import { AddShippingInfo } from './add-shipping-info'
 import { SelectQuantity } from './select-quantity'
 import { AddCardInfo } from './add-card-info'
 
 export const BuyNow = ({
-  isProductPage,
   imgData,
   netPrice,
   quantityAvailable,
@@ -27,16 +26,15 @@ export const BuyNow = ({
   const [isSelectingQuantity, setIsSelectingQuantity] = useState(true)
   const [isAddingCard, setIsAddingCard] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const isSmallScreen = useAtomValue(isSmallScreenAtom)
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-base text-primary-foreground hover:transition-colors font-bold w-full bg-secondary flex-1 bg-gradient-to-r hover:bg-gradient-to-l from-secondary to-primary">
+        <Button className="h-[3rem] text-base sm:text-md md:text-xl text-primary-foreground hover:transition-colors font-bold w-full bg-secondary flex-1 bg-gradient-to-r hover:bg-gradient-to-l from-secondary to-primary gap-2 sm:gap-4">
           Buy Now
-          <>
+          <span className="flex w-8 sm:w-16">
             <ShoppingCart />
-            <Check className="w-4" />
-          </>
+            <Check />
+          </span>
         </Button>
       </DialogTrigger>
       <DialogContent className="transition-all ease-in-out overflow-y-scroll rounded-md w-[90vw] p-8 py-16 md:p-16 h-[90vh] sm:h-[80vh] sm:w-[80vw] md:w-[70vw] max-w-none">

@@ -1,4 +1,4 @@
-# Welcome to Sellit.
+# Welcome to Thrift.
 
 A [website](https://thrift-web-client.vercel.app) where you can buy and sell any product on your laptop or smartphone, from the comfort of your home.
 
