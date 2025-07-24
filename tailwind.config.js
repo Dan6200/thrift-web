@@ -54,6 +54,14 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'hero-primary': {
+          DEFAULT: 'hsl(var(--hero-primary))',
+          foreground: 'hsl(var(--hero-primary-foreground))',
+        },
+        'hero-secondary': {
+          DEFAULT: 'hsl(var(--hero-secondary))',
+          foreground: 'hsl(var(--hero-secondary-foreground))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

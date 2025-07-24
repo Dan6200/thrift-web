@@ -3,9 +3,9 @@ import getProducts from './products/get-products'
 import { isProductData } from '@/components/products/types'
 import { ProductsHome } from '@/components/products/home-page'
 import { MoveRight } from 'lucide-react'
-import { Welcome } from '@/components/welcome'
 import { Montagu_Slab } from 'next/font/google'
-import { Hero } from './hero'
+import { Hero } from '@/components/hero'
+import { CTA } from '@/components/cta'
 
 const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
@@ -17,9 +17,12 @@ export default async function Home() {
   }
   // Move these to child components to use clients
   return (
-    <div className="w-full mx-auto">
-      <Hero className={font?.className}>
-        Create lasting memories shopping from Thrift.
+    <div className="w-full mx-auto space-y-8 md:space-y-16">
+      <Hero
+        className={`${font?.className} text-background dark:text-foreground flex flex-col gap-8 md:gap-20 lg:gap-24 xl:gap-32`}
+      >
+        Create lasting memories shopping with Thrift.
+        <CTA />
       </Hero>
       <ProductsHome products={productData.products} />
       <Link

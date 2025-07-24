@@ -8,7 +8,7 @@ export function Hero({
   className?: string
 }) {
   return (
-    <div className="relative h-screen">
+    <div className="h-screen">
       <video
         autoPlay
         muted
@@ -19,7 +19,7 @@ export function Hero({
       ></video>
       <div
         className={cn(
-          'text-5xl sm:text-[8rem] uppercase p-16 bg-muted/40 font-extrabold relative z-10 flex h-full text-left items-center justify-center',
+          'text-5xl sm:text-[8rem] uppercase p-8 md:p-16 bg-foreground/60 dark:bg-background/60 top-0 absolute font-extrabold z-5 flex h-screen text-left items-start justify-center',
           className,
         )}
       >

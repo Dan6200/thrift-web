@@ -29,8 +29,8 @@
     --tertiary: 0 0% 9%;
     --tertiary-foreground: 0 0% 98%;
 
-    --accent: 268 66% 66%;
-    --accent-foreground: 268 66% 96%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 4.8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -38,6 +38,12 @@
     --ring: 0 0% 63.9%;
 
     --radius: 0.5rem;
+
+    --hero-primary: 268 66% 66%;
+    --hero-primary-foreground: 0 0% 98%; /* A very light foreground for dark mode */
+
+    --hero-secondary: 358 88% 58%;
+    --hero-secondary-foreground: 0 0% 93%;
   }
 
   .dark {
@@ -72,6 +78,12 @@
     --destructive-foreground: 0 64% 98%;
 
     --ring: 0 0% 14.9%;
+
+    --hero-primary: 268 66% 46%; /* A darker purple for dark mode */
+    --hero-primary-foreground: 0 0% 98%; /* A very light foreground for dark mode */
+
+    --hero-secondary: 358 88% 48%; /* A darker red for dark mode */
+    --hero-secondary-foreground: 0 0% 98%; /* A very light foreground for dark mode */
   }
 }
 
