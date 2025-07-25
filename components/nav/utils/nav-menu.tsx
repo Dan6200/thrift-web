@@ -53,7 +53,7 @@ export function NavMenu({
     }
   }
   return (
-    <NavigationMenu className="max-w-none border-b flex flex-row items-center justify-between w-full px-4 py-2  shadow-md bg-muted/60  dark:shadow-none">
+    <NavigationMenu className="max-w-none flex flex-row items-center justify-between w-full px-4 py-2  shadow-wide bg-gradient-to-b from:bg-foreground/20 to:bg-transparent dark:shadow-none">
       <div className="justify-start flex">
         <Link
           href="/"
