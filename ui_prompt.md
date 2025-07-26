@@ -1,73 +1,47 @@
-# E-commerce Dashboard Prompt for Multitenant Platform
+# E-commerce Dashboard Implementation for Multitenant Platform
 
-Create a comprehensive ecommerce dashboard for a multitenant platform. The dashboard should provide a high-level overview and detailed analytics for an individual tenant (a single store), leveraging the provided database schema. The design should be clean, intuitive, and prioritize key performance indicators (KPIs) to enable store owners to make data-driven decisions.
-Key Dashboard Components:
+**Objective:** Implement a comprehensive e-commerce dashboard for a multitenant platform. The dashboard should provide a high-level overview and detailed analytics for an individual tenant (a single store), leveraging the previously designed API. Initially, these APIs should be mocked with dummy data to facilitate front-end development.
 
-1.  High-Level Overview:
+**Key Dashboard Components (to be powered by API calls):**
 
-    A summary section at the top displaying the most critical KPIs for the selected timeframe (e.g., today, this week, last 30 days). Data for these KPIs will primarily come from the orders and profiles tables.
+1.  **High-Level Overview:**
 
-### KPIs to include:
+    - A summary section at the top displaying the most critical KPIs for the selected timeframe (e.g., today, this week, last 30 days).
+      - **KPIs to include (fetch from API):** Total Revenue, Total Orders, Average Order Value (AOV), Conversion Rate (mock with dummy data), New vs. Returning Customers.
+    - A time-series chart showing revenue trends over the selected period.
 
-        Total Revenue: Sum of total_amount from the orders table.
+2.  **Detailed Analytics Sections:**
+    - **Sales Performance (fetch from API):**
+      - A breakdown of sales by product, category, and sales channel.
+      - A table listing recent orders with details like order number, customer name, total amount, and status.
+    - **Customer Insights (fetch from API):**
+      - A graph showing customer acquisition trends over time.
+      - A breakdown of customers by location (e.g., a world map or a list of top countries/cities) - mock location data if not available from API.
+      - Customer Lifetime Value (CLV).
+    - **Product Performance (fetch from API):**
+      - A table showing top-selling products by units and revenue.
+      - A list of products with the lowest stock levels.
+      - Data on product views vs. purchases to identify popular but low-converting items (mock views data).
 
-        Total Orders: Count of records in the orders table.
+**API Usage Instructions:**
 
-        Average Order Value (AOV): Calculated as Total Revenue / Total Orders, using orders.total_amount.
+- **Utilize the previously defined API design.** The agent should make calls to these endpoints.
+- **Mock API Responses:** For initial development, create dummy data for each API endpoint. When the dashboard makes an API request, it should receive this mocked data. This allows for independent front-end development without a live backend connection.
+- The API endpoints will be under a `/v1/dashboard/{storeId}/` prefix.
 
-        Conversion Rate: (Total Orders / Total Website Sessions) - Note: Website sessions data is assumed to be external to the provided schema.
+**Filtering & Customization (to be implemented on the front-end, interacting with API parameters):**
 
-        New vs. Returning Customers: Derived from profiles.created_at and orders.customer_id (checking if a customer_id has multiple orders or a recent created_at date).
+- A global date range selector to filter all dashboard data, passing `startDate` and `endDate` to API calls.
+- Dropdown menus to filter data by specific product categories, sales channels, or customer segments, passing relevant query parameters to API calls.
 
-    A time-series chart showing revenue trends over the selected period, using orders.order_date and orders.total_amount.
+**Design and UX Considerations:**
 
-2.  Detailed Analytics Sections:
+- Use a clean, modern design with a focus on data visualization (charts, graphs, progress bars).
+- Use a consistent color palette to represent different data points.
+- Ensure the dashboard is responsive and works well on both desktop and mobile devices.
+- Provide a clear navigation menu to switch between different sections or tenants.
 
-### Sales Performance:
-
-        A breakdown of sales by product, category, and sales channel. This will involve joining order_items (for quantity and price_at_purchase) with products (for title, category_id, subcategory_id) and stores (for store_id).
-
-        A table listing recent orders with details like order number (orders.order_id), customer name (from profiles via orders.customer_id), total amount (orders.total_amount), and status (orders.status).
-
-    Customer Insights:
-
-        A graph showing customer acquisition trends over time, using profiles.created_at.
-
-        A breakdown of customers by location (e.g., a world map or a list of top countries/cities) - This would require location data within the profiles table or linked via address_id.
-
-        Customer Lifetime Value (CLV): Aggregated total_amount from orders for each customer_id in the profiles table.
-
-    Product Performance:
-
-        A table showing top-selling products by units and revenue, derived from order_items.product_id, order_items.quantity, order_items.price_at_purchase, and products.title.
-
-        A list of products with the lowest stock levels, directly from products.quantity_available.
-
-        Data on product views vs. purchases to identify popular but low-converting items. Purchases are from order_items; views are assumed to be external data.
-
-    Marketing & Traffic:
-
-        A breakdown of traffic sources (e.g., direct, search, social, referral) - This data is assumed to be external to the provided schema.
-
-        Data on how different marketing campaigns are performing - This data is assumed to be external to the provided schema.
-
-        A graph showing website sessions vs. unique visitors - This data is assumed to be external to the provided schema.
-
-3.  Filters & Customization:
-
-    A global date range selector to filter all dashboard data, primarily using created_at and updated_at timestamps from various tables (e.g., orders.order_date).
-
-    Dropdown menus to filter data by specific product categories (using products.category_id and subcategory_id), sales channels (potentially derived from stores.custom_domain or external data), or customer segments (from profiles).
-
-### Design and UX Considerations:
-
-    Use a clean, modern design with a focus on data visualization (charts, graphs, progress bars).
-
-    Use a consistent color palette to represent different data points.
-
-    Ensure the dashboard is responsive and works well on both desktop and mobile devices.
-
-    Provide a clear navigation menu to switch between different sections or tenants (if designing for the platform administrator view).
+**Resources (provided for context, to be used in implementation):**
 
 `app/globals.css`:
 

@@ -45,3 +45,4 @@ notes.md
 # vim
 .*.sw*
 Session.vim.*
+/_tailwind.config.js
