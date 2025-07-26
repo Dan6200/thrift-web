@@ -1,4 +1,4 @@
-E-commerce Dashboard Prompt for Multitenant Platform
+# E-commerce Dashboard Prompt for Multitenant Platform
 
 Create a comprehensive ecommerce dashboard for a multitenant platform. The dashboard should provide a high-level overview and detailed analytics for an individual tenant (a single store), leveraging the provided database schema. The design should be clean, intuitive, and prioritize key performance indicators (KPIs) to enable store owners to make data-driven decisions.
 Key Dashboard Components:
@@ -7,7 +7,7 @@ Key Dashboard Components:
 
     A summary section at the top displaying the most critical KPIs for the selected timeframe (e.g., today, this week, last 30 days). Data for these KPIs will primarily come from the orders and profiles tables.
 
-    KPIs to include:
+### KPIs to include:
 
         Total Revenue: Sum of total_amount from the orders table.
 
@@ -23,7 +23,7 @@ Key Dashboard Components:
 
 2.  Detailed Analytics Sections:
 
-    Sales Performance:
+### Sales Performance:
 
         A breakdown of sales by product, category, and sales channel. This will involve joining order_items (for quantity and price_at_purchase) with products (for title, category_id, subcategory_id) and stores (for store_id).
 
@@ -59,7 +59,7 @@ Key Dashboard Components:
 
     Dropdown menus to filter data by specific product categories (using products.category_id and subcategory_id), sales channels (potentially derived from stores.custom_domain or external data), or customer segments (from profiles).
 
-Design and UX Considerations:
+### Design and UX Considerations:
 
     Use a clean, modern design with a focus on data visualization (charts, graphs, progress bars).
 
@@ -200,5 +200,99 @@ Design and UX Considerations:
     width: 85%; /* Example: 90% of its parent's width */
   }
 }
+```
 
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        lg: '1920px',
+      },
+    },
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        tertiary: {
+          DEFAULT: 'hsl(var(--tertiary))',
+          foreground: 'hsl(var(--tertiary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        'hero-primary': {
+          DEFAULT: 'hsl(var(--hero-primary))',
+          foreground: 'hsl(var(--hero-primary-foreground))',
+        },
+        'hero-secondary': {
+          DEFAULT: 'hsl(var(--hero-secondary))',
+          foreground: 'hsl(var(--hero-secondary-foreground))',
+        },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      boxShadow: {
+        around: '0px 0px 5px 1px var(--tw-shadow-color) !important',
+        wide: '0px 0px 10px 5px var(--tw-shadow-color) !important',
+      },
+    },
+  },
+  plugins: [require('tailwindcss-animate')],
+}
 ```
