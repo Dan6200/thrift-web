@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* E-commerce Dashboard Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+
+    --primary: 268 66% 46%;
+    --primary-foreground: 268 66% 96%;
+
+    --secondary: 358 88% 38%;
+    --secondary-foreground: 358 88% 98%;
+
+    --tertiary: 0 0% 9%;
+    --tertiary-foreground: 0 0% 98%;
+
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 4.8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 0 0% 63.9%;
+
+    --radius: 0.5rem;
+
+    --hero-primary: 268 66% 66%;
+    --hero-primary-foreground: 0 0% 98%;
+
+    --hero-secondary: 358 88% 58%;
+    --hero-secondary-foreground: 0 0% 93%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 0 0% 20.9%;
+    --input: 0 0% 20.9%;
+
+    --primary: 268 66% 66%;
+    --primary-foreground: 0 0% 93%;
+
+    --secondary: 358 88% 58%;
+    --secondary-foreground: 0 0% 93%;
+
+    --tertiary: 0 0% 98%;
+    --tertiary-foreground: 0 0% 9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 64% 98%;
+
+    --ring: 0 0% 14.9%;
+
+    --hero-primary: 268 66% 46%;
+    --hero-primary-foreground: 0 0% 98%;
+
+    --hero-secondary: 358 88% 48%;
+    --hero-secondary-foreground: 0 0% 98%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.disable-scrollbars {
+  /* Chrome/Safari/Webkit */
+  ::-webkit-scrollbar {
+    background: transparent;
+    width: 0px;
+  }
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE 10+ */
+  -ms-overflow-style: none;
+}
+
+.single-line-truncate-responsive {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .single-line-truncate-responsive {
+    width: 85%;
+  }
+}
