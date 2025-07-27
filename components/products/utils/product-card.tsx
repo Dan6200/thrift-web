@@ -16,9 +16,9 @@ export default function ProductCard({ product }: { product: Product }) {
         passHref
         className="hover:bg-primary/20 relative"
       >
-        <CardContent className="bg-background h-[10rem] sm:h-[16rem] border-b p-0 flex items-center">
+        <CardContent className="bg-background h-[10rem] sm:h-[12rem] md:h-[14rem] lg:h-[16rem] border-b p-0 flex items-center">
           <ProductImage
-            className="object-contain mx-auto h-[10rem] sm:h-[16rem]"
+            className="object-contain mx-auto h-[10rem] sm:h-[12rem] md:h-[14rem] lg:h-[16rem]"
             imgData={product?.media.find((img) => img?.is_display_image)}
             width={256}
             height={256}

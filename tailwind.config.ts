@@ -14,7 +14,7 @@ export default {
       center: true,
       padding: '2rem',
       screens: {
-        lg: '1400px',
+        lg: '1600px',
         '2xl': '1920px',
       },
     },
