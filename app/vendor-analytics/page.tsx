@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Store, BarChart3, TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Index = () => {
   return (
@@ -19,7 +19,7 @@ const Index = () => {
             Comprehensive dashboard for multitenant e-commerce platforms. 
             Monitor sales, analyze customer behavior, and optimize your business performance.
           </p>
-          <Link to="/dashboard">
+          <Link href="/vendor-analytics/dashboard">
             <Button size="lg" className="bg-primary hover:bg-primary/90">
               View Dashboard
               <BarChart3 className="ml-2 h-5 w-5" />

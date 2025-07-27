@@ -7,7 +7,7 @@ import { SalesBreakdown } from "@/components/dashboard/SalesBreakdown";
 import { OrdersTable } from "@/components/dashboard/OrdersTable";
 import { CustomerInsights } from "@/components/dashboard/CustomerInsights";
 import { ProductPerformance } from "@/components/dashboard/ProductPerformance";
-import { mockApiService, KPIData, RevenueData, SalesData, Order, CustomerData, Product } from "@/services/mockApi";
+import { mockApiService, KPIData, RevenueData, SalesData, Order, CustomerData, Product } from "@/app/vendor-analytics/services/mockApi";
 import { DollarSign, ShoppingCart, Users, TrendingUp, UserPlus, Repeat } from "lucide-react";
 
 const STORE_ID = "store-123"; // Mock store ID
