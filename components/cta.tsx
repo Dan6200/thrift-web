@@ -30,7 +30,7 @@ export function CTA({
           >
             <button
               type="button"
-              className="p-1 w-full h-full capitalize font-semibold text-foreground text-shadow-sm"
+              className="p-1 w-full h-full capitalize font-semibold text-shadow-sm text-background dark:text-foreground"
             >
               Start selling
             </button>

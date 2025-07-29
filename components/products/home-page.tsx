@@ -11,15 +11,15 @@ import { Product } from './types'
  * */
 
 export const ProductsHome = ({ products }: { products: Product[] }) => {
-  const itemsPerPage = 12
+  const itemsPerPage = 22
   const productsToDisplay = products.slice(0, itemsPerPage)
 
   return (
-    <div className="container mx-auto">
-      <h4 className="w-full mx-auto my-4 text-xl font-bold text-center">
+    <div className="container mx-auto my-0">
+      <h4 className="w-full mx-auto my-4 text-xl md:text-3xl font-bold text-center">
         New Arrivals
       </h4>
-      <ProductsTiles productsToDisplay={productsToDisplay} />
+      <ProductsTiles {...{ productsToDisplay, itemsPerPage }} />
     </div>
   )
 }

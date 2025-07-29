@@ -53,19 +53,21 @@ export function NavMenu({
     }
   }
   return (
-    <NavigationMenu className="max-w-none flex flex-row items-center justify-between w-full px-4 py-2  shadow-wide bg-gradient-to-b from:bg-foreground/20 to:bg-transparent dark:shadow-none">
+    <NavigationMenu className="max-w-none flex flex-row items-center justify-between w-[90vw] mx-auto px-4 py-2 rounded-xl shadow-wide bg-background/20 dark:shadow-none bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-0 border border-gray-500 shadow-gray-300 my-8">
       <div className="justify-start flex">
         <Link
           href="/"
-          className={`${font?.className} bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-2xl font-bold`}
+          className={`${font?.className} bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-2xl font-bold text-shadow-lg`}
         >
           Thrift
         </Link>
-        <NavigationMenuList className="ml-16">
+        <NavigationMenuList className="ml-16 bg-transparent">
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Welcome</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <NavigationMenuTrigger className="bg-accent/20 hover:bg-accent/60 shadow-lg">
+              Welcome
+            </NavigationMenuTrigger>
+            <NavigationMenuContent className="bg-transparent">
+              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-transparent">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
@@ -100,7 +102,9 @@ export function NavMenu({
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Browse Categories</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="bg-accent/20 hover:bg-accent/60 shadow-lg">
+              Browse Categories
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {components.map((component) => (

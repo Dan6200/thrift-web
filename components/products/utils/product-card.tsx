@@ -8,7 +8,6 @@ import { Ratings } from './rating'
 import { Discount } from './discount'
 
 export default function ProductCard({ product }: { product: Product }) {
-  if (!product?.average_rating) return null
   return (
     <Card className="h-fit flex flex-col w-full overflow-hidden rounded-sm">
       <Link
