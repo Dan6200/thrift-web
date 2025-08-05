@@ -10,26 +10,26 @@ import {
   FormLabel,
   FormMessage,
 } from '../../../ui/form'
-import { RegisterFormState } from '../types'
+import { StoreFormType } from '../types'
 
-export const ConfirmPassword = ({
+export const AddressLine2 = ({
   form,
 }: {
-  form: UseFormReturn<RegisterFormState>
+  form: UseFormReturn<StoreFormType>
 }) => (
   <FormField
       control={form.control as any}
-    name="confirm_password"
+    name="store_address.address_line_2"
     render={({ field }) => (
-      <FormItem>
-        <FormLabel>Confirm Password</FormLabel>
+      <FormItem className="md:w-[45%]">
+        <FormLabel>Address Line 2</FormLabel>
         <FormControl>
           <Input
               onChange={field.onChange}
               onBlur={field.onBlur}
               name={field.name}
               value={field.value}
-              placeholder="Confirm Password"
+              placeholder="Apartment, suite, unit, building, floor, etc."
             />
         </FormControl>
         <FormMessage />

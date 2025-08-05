@@ -37,7 +37,7 @@ export const ProductsTiles = ({
       {totalProducts && itemsPerPage && totalProducts > itemsPerPage && (
         <Paginate count={Math.ceil(totalProducts / itemsPerPage)} />
       )}
-      <div className="w-full sm:px-2 sm:py-2 md:px-4 md:py-4 mx-auto place-items-center grid grid-cols-2 gap-y-4 gap-2 sm:gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+      <div className="my-8 w-full sm:px-2 sm:py-2 md:px-4 md:py-4 mx-auto place-items-center grid grid-cols-2 gap-y-4 sm:gap-y-8 md:gap-y-16 lg:gap-y-32 gap-2 sm:gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {productsToDisplay.map((product, index) => {
           console.log(product.product_id, index)
           return (

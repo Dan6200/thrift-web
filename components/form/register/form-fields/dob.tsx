@@ -43,7 +43,7 @@ hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100)
 export const DOB = ({
   form,
 }: {
-  form: UseFormReturn<RegisterFormState, any, undefined>
+  form: UseFormReturn<RegisterFormState>
 }) => {
   const [months] = useState<string[]>(
     Array.from({ length: 12 }, (_, i) => {

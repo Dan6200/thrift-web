@@ -12,7 +12,7 @@ import { ProductFormType } from '../types'
 export const Description = ({
   form,
 }: {
-  form: UseFormReturn<ProductFormType, any, undefined>
+  form: UseFormReturn<ProductFormType>
 }) => {
   return (
     <FormField
@@ -23,7 +23,10 @@ export const Description = ({
           <FormLabel className="block">Description</FormLabel>
           <FormControl>
             <Textarea
-              {...(field as TextareaProps)}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
               placeholder="Write about your product"
               className="h-24"
             />

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { RevenueData } from "@/services/mockApi";
+import { RevenueData } from "@/app/vendor-analytics/services/mockApi";
 
 interface RevenueChartProps {
   data: RevenueData[];

@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Product } from "@/services/mockApi";
+import { Product } from "@/app/vendor-analytics/services/mockApi";
 
 interface ProductPerformanceProps {
   products: Product[];

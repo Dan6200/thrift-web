@@ -1,4 +1,7 @@
-import { Input, InputProps } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
+import { ComponentProps } from 'react'
+
+type InputProps = ComponentProps<typeof Input>
 import { UseFormReturn } from 'react-hook-form'
 import {
   FormControl,
@@ -12,16 +15,22 @@ import { RegisterFormState } from '../types'
 export const LastName = ({
   form,
 }: {
-  form: UseFormReturn<RegisterFormState, any, undefined>
+  form: UseFormReturn<RegisterFormState>
 }) => (
   <FormField
-    control={form.control}
+      control={form.control as any}
     name="last_name"
     render={({ field }) => (
       <FormItem>
         <FormLabel>Last Name</FormLabel>
         <FormControl>
-          <Input placeholder="Last" {...(field as InputProps)} />
+          <Input
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
+              placeholder="Last Name"
+            />
         </FormControl>
         <FormMessage />
       </FormItem>

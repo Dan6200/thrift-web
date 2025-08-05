@@ -1,4 +1,7 @@
-import { Input, InputProps } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
+import { ComponentProps } from 'react'
+
+type InputProps = ComponentProps<typeof Input>
 import { UseFormReturn } from 'react-hook-form'
 import {
   FormControl,
@@ -12,18 +15,21 @@ import { CardInfoFormType } from '../types'
 export const CardNumber = ({
   form,
 }: {
-  form: UseFormReturn<CardInfoFormType, any, undefined>
+  form: UseFormReturn<CardInfoFormType>
 }) => {
   return (
     <FormField
-      control={form.control}
+      control={form.control as any}
       name="card_number"
       render={({ field }) => (
         <FormItem className="md:w-[45%]">
           <FormLabel className="block">Card Number</FormLabel>
           <FormControl>
             <Input
-              {...(field as InputProps)}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
               placeholder="XXXX XXXX XXXX XXXX"
             />
           </FormControl>

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { SalesData } from "@/services/mockApi";
+import { SalesData } from "@/app/vendor-analytics/services/mockApi";
 
 interface SalesBreakdownProps {
   data: SalesData;

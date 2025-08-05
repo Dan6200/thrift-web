@@ -1,4 +1,7 @@
-import { Input, InputProps } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
+import { ComponentProps } from 'react'
+
+type InputProps = ComponentProps<typeof Input>
 import { UseFormReturn } from 'react-hook-form'
 import {
   FormControl,
@@ -12,20 +15,22 @@ import { RegisterFormState } from '../types'
 export const Password = ({
   form,
 }: {
-  form: UseFormReturn<RegisterFormState, any, undefined>
+  form: UseFormReturn<RegisterFormState>
 }) => (
   <FormField
-    control={form.control}
+      control={form.control as any}
     name="password"
     render={({ field }) => (
       <FormItem>
         <FormLabel>Choose a Secure Password</FormLabel>
         <FormControl>
           <Input
-            type="password"
-            {...(field as InputProps)}
-            autoComplete="new-password"
-          />
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
+              placeholder="Password"
+            />
         </FormControl>
         <FormMessage />
       </FormItem>

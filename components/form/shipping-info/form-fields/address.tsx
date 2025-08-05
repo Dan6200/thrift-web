@@ -1,4 +1,7 @@
-import { Input, InputProps } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
+import { ComponentProps } from 'react'
+
+type InputProps = ComponentProps<typeof Input>
 import { forwardRef } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 import {
@@ -14,20 +17,22 @@ import { ShippingInfoFormType } from '../types'
 export const Address = ({
   form,
 }: {
-  form: UseFormReturn<ShippingInfoFormType, any, undefined>
+  form: UseFormReturn<ShippingInfoFormType>
 }) => (
   <FormField
-    control={form.control}
+      control={form.control as any}
     name="address"
     render={({ field }) => (
       <FormItem className="md:w-[45%]">
         <FormLabel>Enter Address</FormLabel>
         <FormControl>
           <Input
-            {...(field as InputProps)}
-            placeholder="My Full Address"
-            autoComplete="address"
-          />
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
+              placeholder="Address"
+            />
         </FormControl>
         <FormMessage />
       </FormItem>

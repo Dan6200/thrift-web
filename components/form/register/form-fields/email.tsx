@@ -1,4 +1,7 @@
-import { Input, InputProps } from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
+import { ComponentProps } from 'react'
+
+type InputProps = ComponentProps<typeof Input>
 import { forwardRef } from 'react'
 import { UseFormReturn } from 'react-hook-form'
 import {
@@ -14,20 +17,22 @@ import { RegisterFormState } from '../types'
 export const Email = ({
   form,
 }: {
-  form: UseFormReturn<RegisterFormState, any, undefined>
+  form: UseFormReturn<RegisterFormState>
 }) => (
   <FormField
-    control={form.control}
+      control={form.control as any}
     name="email"
     render={({ field }) => (
       <FormItem>
         <FormLabel>Enter your Email</FormLabel>
         <FormControl>
           <Input
-            {...(field as InputProps)}
-            placeholder="myemail@mail.com"
-            autoComplete="email"
-          />
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
+              placeholder="Email"
+            />
         </FormControl>
         <FormDescription>
           You may optionally enter your email, phone number or both

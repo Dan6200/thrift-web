@@ -5,6 +5,7 @@ import { UserAccount } from '@/components/user-account/types'
 import ShippingInfo from '@/components/shipping-info/types'
 import { CardInfo } from '@/components/card-info/types'
 export * from './shopping-cart'
+export * from './store'
 
 export const pageAtom = atom(0)
 export const productsAtom = atom<Product[]>([])

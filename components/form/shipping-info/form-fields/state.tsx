@@ -28,7 +28,7 @@ import NaijaStates from 'naija-state-local-government'
 export const State = ({
   form,
 }: {
-  form: UseFormReturn<ShippingInfoFormType, any, undefined>
+  form: UseFormReturn<ShippingInfoFormType>
 }) => {
   const states: string[] = NaijaStates.states()
   const [open, setOpen] = useState(false)

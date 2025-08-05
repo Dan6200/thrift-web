@@ -15,7 +15,7 @@ import { useEffect, useRef } from 'react'
 export const TabbedContactField = ({
   form,
 }: {
-  form: UseFormReturn<LoginFormState, any, undefined>
+  form: UseFormReturn<LoginFormState>
 }) => (
   <>
     <Tabs defaultValue="email" className="">
@@ -36,7 +36,7 @@ export const TabbedContactField = ({
 export const Password = ({
   form,
 }: {
-  form: UseFormReturn<LoginFormState, any, undefined>
+  form: UseFormReturn<LoginFormState>
 }) => (
   <FormField
     control={form.control}
@@ -46,16 +46,9 @@ export const Password = ({
         <FormLabel>Password</FormLabel>
         <FormControl>
           <Input
-            {...(field as LoginInputProps)}
+            {...field}
             type="password"
             autoComplete="current-password"
-            {...form.register('password', {
-              onInput: (ev: Event) =>
-                form.setValue(
-                  'password',
-                  (ev.target as HTMLInputElement).value
-                ),
-            } as RegisterOptions<LoginFormState, 'password'>)}
           />
         </FormControl>
         <FormMessage />
@@ -67,7 +60,7 @@ export const Password = ({
 export const Email = ({
   form,
 }: {
-  form: UseFormReturn<LoginFormState, any, undefined>
+  form: UseFormReturn<LoginFormState>
 }) => (
   <FormField
     control={form.control}
@@ -77,14 +70,9 @@ export const Email = ({
         <FormLabel>Email</FormLabel>
         <FormControl>
           <Input
-            placeholder="myemail@mail.com"
-            {...(field as LoginInputProps)}
-            {...form.register('email', {
-              onInput: (ev: Event) =>
-                form.setValue('email', (ev.target as HTMLInputElement).value),
-            } as RegisterOptions<LoginFormState, 'email'>)}
-            autoComplete="email"
-          />
+              {...field}
+              placeholder="Email"
+            />
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -95,7 +83,7 @@ export const Email = ({
 export const Phone = ({
   form,
 }: {
-  form: UseFormReturn<LoginFormState, any, undefined>
+  form: UseFormReturn<LoginFormState>
 }) => (
   <FormField
     control={form.control}
@@ -105,12 +93,9 @@ export const Phone = ({
         <FormLabel>Phone</FormLabel>
         <FormControl>
           <Input
+            {...field}
+            value={field.value ?? ''}
             placeholder="08012345678"
-            {...(field as LoginInputProps)}
-            {...form.register('phone', {
-              onInput: (ev: Event) =>
-                form.setValue('phone', (ev.target as HTMLInputElement).value),
-            } as RegisterOptions<LoginFormState, 'phone'>)}
             autoComplete="tel"
           />
         </FormControl>

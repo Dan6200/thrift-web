@@ -12,7 +12,7 @@ import { ShippingInfoFormType } from '../types'
 export const DeliveryInstructions = ({
   form,
 }: {
-  form: UseFormReturn<ShippingInfoFormType, any, undefined>
+  form: UseFormReturn<ShippingInfoFormType>
 }) => {
   return (
     <FormField
