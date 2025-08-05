@@ -1,5 +1,5 @@
 'use client'
-import { LoginFormState, LoginInputProps } from './types'
+import { LoginFormState } from './types'
 import {
   FormControl,
   FormItem,
@@ -9,8 +9,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { RegisterOptions, UseFormReturn } from 'react-hook-form'
-import { useEffect, useRef } from 'react'
+import { UseFormReturn } from 'react-hook-form'
 
 export const TabbedContactField = ({
   form,
@@ -33,11 +32,7 @@ export const TabbedContactField = ({
   </>
 )
 
-export const Password = ({
-  form,
-}: {
-  form: UseFormReturn<LoginFormState>
-}) => (
+export const Password = ({ form }: { form: UseFormReturn<LoginFormState> }) => (
   <FormField
     control={form.control}
     name="password"
@@ -45,11 +40,7 @@ export const Password = ({
       <FormItem>
         <FormLabel>Password</FormLabel>
         <FormControl>
-          <Input
-            {...field}
-            type="password"
-            autoComplete="current-password"
-          />
+          <Input {...field} type="password" autoComplete="current-password" />
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -57,11 +48,7 @@ export const Password = ({
   />
 )
 
-export const Email = ({
-  form,
-}: {
-  form: UseFormReturn<LoginFormState>
-}) => (
+export const Email = ({ form }: { form: UseFormReturn<LoginFormState> }) => (
   <FormField
     control={form.control}
     name="email"
@@ -69,10 +56,7 @@ export const Email = ({
       <FormItem>
         <FormLabel>Email</FormLabel>
         <FormControl>
-          <Input
-              {...field}
-              placeholder="Email"
-            />
+          <Input {...field} placeholder="Email" value={field.value ?? ''} />
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -80,11 +64,7 @@ export const Email = ({
   />
 )
 
-export const Phone = ({
-  form,
-}: {
-  form: UseFormReturn<LoginFormState>
-}) => (
+export const Phone = ({ form }: { form: UseFormReturn<LoginFormState> }) => (
   <FormField
     control={form.control}
     name="phone"

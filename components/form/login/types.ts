@@ -1,4 +1,3 @@
-import { InputProps } from '@/components/ui/input'
 import { Noop, RefCallBack } from 'react-hook-form'
 
 export interface LoginFormState {
@@ -8,7 +7,7 @@ export interface LoginFormState {
   ['']: string
 }
 
-export interface LoginInputProps extends InputProps {
+export interface LoginInputProps {
   onChange: (...event: any[]) => {}
   onInput: (...event: any[]) => {}
   onBlur: Noop
