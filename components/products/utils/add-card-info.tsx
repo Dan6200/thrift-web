@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { DialogFooter, DialogHeader, DialogTitle } from '../../ui/dialog'
 import { ArrowLeft } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
-import ShippingInfo from '@/components/shipping-info/types'
+import ShippingInfo from '@/types/shipping-info'
 import { CardInfoForm } from '@/components/form/card-info'
 
 export const AddCardInfo = ({

@@ -1,5 +1,5 @@
+import { Product } from '@/types/products'
 import { Star } from 'lucide-react'
-import { Product } from '../types'
 
 export function Ratings({
   average_rating,

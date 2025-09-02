@@ -1,9 +1,5 @@
 //cspell:ignore ponyfill
-import {
-  isProductData,
-  isProducts,
-  ProductData,
-} from '@/components/products/types'
+import { isProductData, isProducts, ProductData } from '@/types/products'
 
 export default async function getProducts() {
   // fetch products
@@ -14,7 +10,7 @@ export default async function getProducts() {
         public: 'true',
         sort: '-created_at',
       }),
-    { next: { revalidate: 60 * 60 } }
+    { next: { revalidate: 60 * 60 } },
   ).then((res) => {
     if (res.status >= 400) return null
     return res.json()

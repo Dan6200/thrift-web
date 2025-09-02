@@ -4,7 +4,7 @@ import { DialogFooter, DialogHeader, DialogTitle } from '../../ui/dialog'
 import { ArrowLeft } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
 import { ShippingInfoForm } from '@/components/form/shipping-info'
-import ShippingInfo from '@/components/shipping-info/types'
+import ShippingInfo from '@/types/shipping-info'
 
 export const AddShippingInfo = ({
   shippingInfo,

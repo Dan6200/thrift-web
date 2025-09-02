@@ -1,7 +1,7 @@
 //cspell: ignore semibold jotai
 'use client'
 import { ProductsTiles } from './tiles'
-import { Product } from './types'
+import { Product } from '@/types/products'
 
 /** Display products in a grid
  * for home page only

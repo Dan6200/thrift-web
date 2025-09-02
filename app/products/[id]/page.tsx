@@ -1,7 +1,7 @@
 // Purpose: Page for displaying all products
 
 import { Product } from '@/components/products/product'
-import { isProduct, isProductData } from '@/components/products/types'
+import { isProduct, isProductData } from '@/types/products'
 import getProductById from '../get-product-by-id'
 import getProducts from '../get-products'
 

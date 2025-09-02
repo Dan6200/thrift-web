@@ -1,8 +1,8 @@
 'use client'
-import { Product } from './types'
 import { useAtomValue } from 'jotai'
 import { pageNumAtom } from '@/atoms'
 import { ProductsTiles } from './tiles'
+import { Product } from '@/types/products'
 
 // One based to work well with mui component
 
@@ -12,7 +12,7 @@ export const Products = ({ products }: { products: Product[] }) => {
   const pageNum = useAtomValue(pageNumAtom)
   const productsToDisplay = products.slice(
     pageNum * itemsPerPage - itemsPerPage,
-    pageNum * itemsPerPage
+    pageNum * itemsPerPage,
   )
 
   return (

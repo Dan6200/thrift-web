@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import getProducts from './products/get-products'
-import { isProductData } from '@/components/products/types'
+import { isProductData } from '@/types/products'
 import { ProductsHome } from '@/components/products/home-page'
 import { MoveRight } from 'lucide-react'
 import { Montagu_Slab } from 'next/font/google'

@@ -1,6 +1,6 @@
 // Purpose: Page for displaying all products
 import { Products } from '@/components/products'
-import { isProducts } from '@/components/products/types'
+import { isProducts } from '@/types/products'
 import { notFound } from 'next/navigation'
 import filterByField from './filter'
 

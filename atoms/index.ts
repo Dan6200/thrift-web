@@ -1,9 +1,9 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
-import { Product } from '@/components/products/types'
+import { Product } from '@/types/products'
 import { UserAccount } from '@/components/user-account/types'
-import ShippingInfo from '@/components/shipping-info/types'
-import { CardInfo } from '@/components/card-info/types'
+import ShippingInfo from '@/types/shipping-info'
+import { CardInfo } from '@/types/card-info'
 export * from './shopping-cart'
 export * from './store'
 
@@ -20,3 +20,4 @@ export const shippingInfoAtom = atomWithStorage<ShippingInfo | null>(
   'shipping-info',
   null,
 )
+

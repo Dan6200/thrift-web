@@ -1,4 +1,4 @@
-import { Product } from '@/components/products/types'
+import { Product } from '@/types/products'
 
 export type Item = {
   product: Product
@@ -24,14 +24,14 @@ export class ShoppingCart {
       count: 1,
     }
     const alreadyExists = this.cartItems.find(
-      (item) => item.product.product_id === newItem.product.product_id
+      (item) => item.product.product_id === newItem.product.product_id,
     )
     return alreadyExists ? !alreadyExists : !!this.cartItems.push(newItem)
   }
   removeItem(product: Product) {
     const oldLength = this.cartItems.length
     this.cartItems = this.cartItems.filter(
-      (item) => item.product.product_id !== product.product_id
+      (item) => item.product.product_id !== product.product_id,
     )
     return oldLength >= this.cartItems.length
   }

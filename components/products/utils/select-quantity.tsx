@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button'
 import { DialogFooter, DialogHeader, DialogTitle } from '../../ui/dialog'
 import { Minus, Plus } from 'lucide-react'
 import { Dispatch, SetStateAction } from 'react'
-import { ImgData } from '../types'
-import ShippingInfo from '@/components/shipping-info/types'
+import { ImgData } from '@/types/products'
+import ShippingInfo from '@/types/shipping-info'
 
 export const SelectQuantity = ({
   quantity,

@@ -1,11 +1,11 @@
 //cspell:ignore ponyfill
-import { isProduct } from '@/components/products/types'
+import { isProduct } from '@/types/products'
 
 export default async function getProductById(id: number) {
   // fetch product
   const response = await fetch(
     process.env.NEXT_PUBLIC_SERVER + '/v1/products/' + id + '?public=true',
-    { next: { revalidate: 30 * 60 } }
+    { next: { revalidate: 30 * 60 } },
   ).then((res) => {
     if (res.status === 404) return null
     return res.json()

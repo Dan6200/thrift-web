@@ -1,5 +1,4 @@
 import Paginate from '../pagination'
-import { Product } from './types'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
   addItemAtom,
@@ -10,6 +9,7 @@ import {
 import { useToast } from '../ui/use-toast'
 import { useEffect, useState } from 'react'
 import ProductCard from './utils/product-card'
+import { Product } from '@/types/products'
 
 export const ProductsTiles = ({
   totalProducts,

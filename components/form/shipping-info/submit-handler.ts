@@ -1,4 +1,4 @@
-import ShippingInfo from '@/components/shipping-info/types'
+import ShippingInfo from '@/types/shipping-info'
 import { useSetAtom } from 'jotai'
 import { ShippingInfoFormType } from './types'
 

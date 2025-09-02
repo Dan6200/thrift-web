@@ -1,6 +1,6 @@
 // Purpose: Page for displaying all products
 import { Products } from '@/components/products'
-import { isProductData } from '@/components/products/types'
+import { isProductData } from '@/types/products'
 import getProducts from './get-products'
 
 export default async function ProductsPage() {

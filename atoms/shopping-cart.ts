@@ -1,11 +1,11 @@
-import { Product } from '@/components/products/types'
-import { Item, ShoppingCart } from '@/components/shopping-cart/types'
+import { ShoppingCart } from '@/types/shopping-cart'
+import { Product } from '@/types/products'
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
 export const shoppingCartAtom = atomWithStorage<ShoppingCart | null>(
   'shopping-cart',
-  null
+  null,
 )
 
 export const addItemAtom = atom(null, (get, set, newProduct: Product) => {
@@ -18,7 +18,7 @@ export const removeItemAtom = atom(null, (get, set, newProduct: Product) => {
   const shoppingCart = get(shoppingCartAtom)
   if (
     shoppingCart?.cartItems.find(
-      ({ product }) => product.product_id === newProduct.product_id
+      ({ product }) => product.product_id === newProduct.product_id,
     )
   ) {
     const newShoppingCart = new ShoppingCart(null, shoppingCart)

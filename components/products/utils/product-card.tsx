@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { ProductImage } from '../image'
-import { Product } from '../types'
 import { Price } from './price'
 import { Title } from './title'
 import { Ratings } from './rating'
 import { Discount } from './discount'
+import { Product } from '@/types/products'
 
 export default function ProductCard({ product }: { product: Product }) {
+  const imageData = product?.media.find((img) => img.is_display_image)
+  if (!imageData) throw new Error('Product must have a display image')
   return (
     <Card className="h-fit flex flex-col w-full overflow-hidden rounded-sm">
       <Link
@@ -18,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <CardContent className="bg-background h-[10rem] sm:h-[12rem] md:h-[14rem] lg:h-[16rem] border-b p-0 flex items-center">
           <ProductImage
             className="object-contain mx-auto h-[10rem] sm:h-[12rem] md:h-[14rem] lg:h-[16rem]"
-            imgData={product?.media.find((img) => img?.is_display_image)}
+            imgData={imageData}
             width={256}
             height={256}
           />

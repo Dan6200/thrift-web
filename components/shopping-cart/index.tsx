@@ -2,13 +2,13 @@
 // cspell:ignore Swipeable
 import { ProductImage } from '../products/image'
 import { Card, CardContent } from '../ui/card'
-import { Item } from './types'
 import { Button } from '../ui/button'
 import { Minus, PanelRightClose, Plus, Trash2 } from 'lucide-react'
-import ShippingInfo from '../shipping-info/types'
+import ShippingInfo from '@/types/shipping-info'
 import { useSetAtom } from 'jotai'
-import { Product } from '../products/types'
 import { Dispatch, SetStateAction } from 'react'
+import { ImgData, Product } from '@/types/products'
+import { Item } from '@/types/shopping-cart'
 
 type RemoveItem = ReturnType<
   typeof useSetAtom<null, [newProduct: Product], void>
@@ -65,7 +65,7 @@ export function ShoppingCart({
                   <ProductImage
                     className="py-1 object-contain w-32 mx-auto rounded-sm bg-white max-h-24 sm:max-h-20 object-center border dark:border-none"
                     imgData={product?.media?.find(
-                      (img) => img?.is_display_image,
+                      (img: ImgData) => img.is_display_image,
                     )}
                     width={128}
                     height={128}
