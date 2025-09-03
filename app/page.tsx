@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import getProducts from './products/get-products'
-import { isProductData } from '@/types/products'
 import { ProductsHome } from '@/components/products/home-page'
 import { MoveRight } from 'lucide-react'
 import { Montagu_Slab } from 'next/font/google'
@@ -10,12 +8,7 @@ import { CTA } from '@/components/cta'
 const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
 export default async function Home() {
-  // fetch and display products on home page
-  const productData: unknown = await getProducts()
-  if (!isProductData(productData)) {
-    throw new Error('Invalid product data')
-  }
-  // Move these to child components to use clients
+  // ProductsHome component now handles fetching internally
   return (
     <div className="w-full mx-auto space-y-8 md:space-y-16">
       <Hero
@@ -24,7 +17,7 @@ export default async function Home() {
         Create lasting memories shopping with Thrift.
         <CTA />
       </Hero>
-      <ProductsHome products={productData.products} />
+      <ProductsHome />
       <Link
         href="/products"
         className="dark:text-blue-200 text-blue-700 block w-fit my-8 ml-[60%] sm:ml-[80%]"

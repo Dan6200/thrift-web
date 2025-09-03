@@ -7,9 +7,13 @@ import { SearchIcon, X } from 'lucide-react'
 import { useAtomValue } from 'jotai'
 import { isSmallScreenAtom } from '@/atoms'
 
-const searchClient = instantMeiliSearch(
+if (!process.env.NEXT_PUBLIC_SEARCH || !process.env.NEXT_PUBLIC_SEARCH_KEY)
+  throw new Error('Must set search url and key!')
+
+// Update searchClient needs to be destructured and not just assigned
+const { searchClient } = instantMeiliSearch(
   process.env.NEXT_PUBLIC_SEARCH!,
-  process.env.NEXT_PUBLIC_SEARCH_KEY
+  process.env.NEXT_PUBLIC_SEARCH_KEY,
 )
 
 type SearchProps = {
@@ -50,7 +54,7 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(
         </div>
       </InstantSearch>
     )
-  }
+  },
 )
 
 Search.displayName = 'Search'
@@ -94,7 +98,7 @@ const TruncatedHighlight = ({
 const truncateAndHighlight = (
   text: string,
   length: number,
-  highlightTag = 'mark'
+  highlightTag = 'mark',
 ) => {
   let truncatedText = text.substring(0, length)
 
@@ -106,7 +110,7 @@ const truncateAndHighlight = (
     new RegExp(`<${highlightTag}>(.*?)<\/${highlightTag}>`, 'g'),
     (_, p1) => {
       return `<${highlightTag}>${p1}</${highlightTag}>`
-    }
+    },
   )
 }
 

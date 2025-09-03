@@ -1,7 +1,13 @@
 //cspell:ignore ponyfill
 import { isProductData, isProducts, ProductData } from '@/types/products'
 
-export default async function getProducts() {
+export default async function getProducts({
+  page = 1,
+  limit = 50,
+}: {
+  page?: number
+  limit?: number
+}) {
   // fetch products
   const response = await fetch(
     process.env.NEXT_PUBLIC_SERVER +
@@ -9,6 +15,8 @@ export default async function getProducts() {
       new URLSearchParams({
         public: 'true',
         sort: '-created_at',
+        page: page.toString(),
+        limit: limit.toString(),
       }),
     { next: { revalidate: 60 * 60 } },
   ).then((res) => {
@@ -26,5 +34,5 @@ export default async function getProducts() {
     throw new Error('Failed to fetch products')
   }
 
-  return { products, total_products } as ProductData
+  return { products, totalCount: total_products } as ProductData
 }
