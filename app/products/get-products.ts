@@ -9,13 +9,14 @@ export default async function getProducts({
   limit?: number
 }) {
   // fetch products
+  console.log(process.env.NEXT_PUBLIC_SERVER)
   const response = await fetch(
     process.env.NEXT_PUBLIC_SERVER +
       '/v1/products?' +
       new URLSearchParams({
         public: 'true',
         sort: '-created_at',
-        page: page.toString(),
+        offset: page.toString(),
         limit: limit.toString(),
       }),
     { next: { revalidate: 60 * 60 } },
@@ -28,11 +29,11 @@ export default async function getProducts({
     throw new Error('Failed to fetch data')
   }
 
-  const { products, total_products } = response
+  const { products, total_products } = response // should be total_count
 
   if (!isProducts(products)) {
     throw new Error('Failed to fetch products')
   }
 
-  return { products, totalCount: total_products } as ProductData
+  return { products, total_products } as ProductData
 }

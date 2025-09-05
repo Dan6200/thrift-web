@@ -1,6 +1,4 @@
 //cspell: ignore semibold jotai
-'use client'
-import { useState, useEffect, useCallback } from 'react'
 import { ProductsTiles } from './tiles'
 import { Product } from '@/types/products'
 import getProducts from '@/app/products/get-products'
@@ -12,32 +10,19 @@ import getProducts from '@/app/products/get-products'
  * fetches more products from the API when the last page is reached
  * */
 
-export const ProductsHome = () => {
-  const [productsToDisplay, setProductsToDisplay] = useState<Product[]>([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
-  const itemsPerPage = 22 // You can make this dynamic if needed
-
-  const fetchProducts = useCallback(async (page: number) => {
-    try {
-      const { products, totalCount } = await getProducts({
-        page,
-        limit: itemsPerPage,
-      })
-      setProductsToDisplay(products)
-      setTotalPages(Math.ceil(totalCount / itemsPerPage))
-    } catch (error) {
-      console.error('Failed to fetch products:', error)
-      // Handle error, maybe set an error state
-    }
-  }, [itemsPerPage])
-
-  useEffect(() => {
-    fetchProducts(currentPage)
-  }, [currentPage, fetchProducts])
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
+export const ProductsHome = async () => {
+  const page = 1,
+    limit = 22
+  let products: Product[]
+  try {
+    ;({ products } = await getProducts({
+      page,
+      limit,
+    }))
+    console.log('products', products)
+  } catch (error) {
+    console.error('Failed to fetch products:', error)
+    // Handle error, maybe set an error state
   }
 
   return (
@@ -46,10 +31,9 @@ export const ProductsHome = () => {
         New Arrivals
       </h4>
       <ProductsTiles
-        productsToDisplay={productsToDisplay}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
+        productsToDisplay={products}
+        currentPage={page}
+        totalPages={limit}
       />
     </div>
   )

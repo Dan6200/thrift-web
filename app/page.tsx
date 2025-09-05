@@ -8,7 +8,6 @@ import { CTA } from '@/components/cta'
 const font = Montagu_Slab({ weight: '500', subsets: ['latin'] })
 
 export default async function Home() {
-  // ProductsHome component now handles fetching internally
   return (
     <div className="w-full mx-auto space-y-8 md:space-y-16">
       <Hero

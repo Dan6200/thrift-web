@@ -6,7 +6,8 @@ export function Ratings({
   review_count,
 }: Pick<Product, 'average_rating' | 'review_count'>) {
   return (
-    <div className="flex w-4/5 sm:w-3/5 justify-between sm:justify-start sm:gap-1">
+    <div className="flex w-4/5 sm:w-3/5 justify-between">
+      {/*<div className="flex w-4/5 sm:w-3/5 justify-between sm:justify-start sm:gap-1">*/}
       <div className="flex items-center">
         {Array.from({ length: 5 }, (_, i) => {
           const rating = average_rating ?? 0
